@@ -6,6 +6,11 @@ a{
 body{
     padding-top: 10px;
     background-image: url("../ressources/background.png");
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
 .btn-home{
@@ -28,8 +33,9 @@ body{
 }
 
 .btn-log:hover{
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.9);
     transition: all 0.3s ease;
+    color: #2d2e36;
 }
 
 .home{
@@ -53,7 +59,7 @@ body{
     border: none;
     border-radius: 70px;
     height: 3.5rem;
-    width: 48rem;
+    width: 50vw;
     font-weight: 100;
     font-size: 1.3rem;
     color: white;
@@ -62,6 +68,7 @@ body{
 }
 
 .search::placeholder{
+
     padding: 5px;
     color: #A8A9BC;
     opacity: 100%;
@@ -71,3 +78,31 @@ body{
     
 }
 
+
+@media (max-width: 1220px){
+    .btn-home{
+        font-size: 4rem;
+    }
+    
+    .loupe{
+        position: absolute;
+        color: white;
+        top: 17px;
+        left: 15px;
+        font-weight: 100;
+    }
+    
+    .search{
+        font-size: 1.1rem;
+        height: 3rem;
+        width: 30vw;
+    }
+    .search::placeholder{
+        font-size: 1.1rem;
+        padding: 0;
+    }
+}
+
+@media (max-width: 850px){
+
+}
