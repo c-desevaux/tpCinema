@@ -54,6 +54,8 @@ body{
     border-radius: 70px;
     height: 3.5rem;
     width: 48rem;
+    font-weight: 100;
+    font-size: 1.3rem;
     color: white;
     padding-left: 40px;
 
