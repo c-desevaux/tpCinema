@@ -19,13 +19,16 @@ body{
 
 .btn-log{
     border-radius: 100px;
-    color: white;
-    opacity: 10%;
+    color: #A8A9BC;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 150px;
+    height: 50px;
     
 }
 
 .btn-log:hover{
-    opacity: 30%;
+    background-color: rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
 }
 
@@ -33,20 +36,36 @@ body{
     color: white;
 }
 
+.loupe{
+    position: absolute;
+    color: white;
+    top: 20px;
+    left: 15px;
+    font-weight: 100;
+}
+
+#search-container{
+    position: relative;
+}
+
 .search{
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 70px;
-    height: 3rem;
-    width: 50rem;
+    height: 3.5rem;
+    width: 48rem;
     color: white;
     padding-left: 40px;
 
 }
 
 .search::placeholder{
+    padding: 5px;
     color: #A8A9BC;
     opacity: 100%;
     font-weight: 100;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    
 }
 
