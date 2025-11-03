@@ -1,0 +1,52 @@
+
+a{
+    text-decoration: none;
+}
+
+body{
+    padding-top: 10px;
+    background-image: url("../ressources/background.png");
+}
+
+.btn-home{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5rem;
+    color: white;
+    letter-spacing: 20px;
+}
+
+.btn-log{
+    border-radius: 100px;
+    color: white;
+    opacity: 10%;
+    
+}
+
+.btn-log:hover{
+    opacity: 30%;
+    transition: all 0.3s ease;
+}
+
+.home{
+    color: white;
+}
+
+.search{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 70px;
+    height: 3rem;
+    width: 50rem;
+    color: white;
+    padding-left: 40px;
+
+}
+
+.search::placeholder{
+    color: #A8A9BC;
+    opacity: 100%;
+    font-weight: 100;
+}
+
