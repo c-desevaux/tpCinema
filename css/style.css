@@ -91,6 +91,7 @@ body{
 
 .right-content{
     position: absolute;
+    padding-right: 5rem;
     top: 0 ;
     left: 25rem;
     height: 50vw;
@@ -137,6 +138,7 @@ body{
 
 .synopsis{
     text-align: justify;
+    
     font-size: 1.1rem;
     font-weight: 100;
 }
