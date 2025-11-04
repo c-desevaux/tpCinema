@@ -52,8 +52,29 @@ body{
     transition: all 0.3s ease;
     color: #2d2e36;
 }
+.btn-watch-small{
+    visibility: hidden;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    height: 45px;
+    width: 150px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,rgba(53, 126, 221, 1) 0%, rgba(39, 59, 162, 1) 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
+    background-size: 200% 100%;
+    background-position: left center;
+    cursor: pointer;
+    transition: background-position 0.2s ease-in-out;
+}
+
+.btn-watch-small:hover{
+    /* background: linear-gradient(90deg,rgba(39, 59, 162, 1) 0%, rgba(53, 126, 221, 1) 100%); */
+    background-position: right center;
+}
 
 .btn-watch{
+    display: block;
     color: white;
     border: none;
     font-size: 1.1rem;
@@ -141,6 +162,8 @@ body{
 }
 
 
+
+
 .sub{
     font-size: 1.1rem;
     font-weight: 100;
@@ -200,6 +223,18 @@ body{
         display: none;
         
     }
+
+    .btn-watch{
+        visibility: hidden;
+        display: none!important;
+        
+    }
+    .btn-watch-small{
+        visibility: visible;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
     .home{
         display: none;
     }
@@ -219,6 +254,9 @@ body{
         padding: 0;
         height: 40vh;
         margin-bottom: 20px;
+    }
+    nav{
+        position: static;
     }
     #portrait-container{
         display: none;
@@ -242,10 +280,5 @@ body{
         display: none;
     }
 
-    .sub{
-        display: none;
-    }
-    .sub-2{
-        display: none;
-    }
+    
 }
