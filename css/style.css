@@ -73,16 +73,27 @@ body{
 }
 
 .movie-container{
+    position: relative;
     margin-top: 20vh;
     color: white;
     
 
 }
 .movie-container > img{
-    width: 30vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60vh;
     border-radius: 10px;
     margin-right: 5%;
     
+}
+
+.right-content{
+    position: absolute;
+    top: 0 ;
+    left: 25rem;
+    height: 50vw;
 }
 
 #search-container{
@@ -125,6 +136,7 @@ body{
 }
 
 .synopsis{
+    text-align: justify;
     font-size: 1.1rem;
     font-weight: 100;
 }
