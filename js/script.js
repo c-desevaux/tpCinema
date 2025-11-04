@@ -1,5 +1,7 @@
     "use strict";
 
+
+
     //On recupere en début de script tous les objets pour acceder au DOM
     const movieImg = document.getElementById("movie-img");
     const title = document.getElementById("title");
@@ -10,13 +12,14 @@
     const actors = document.getElementById("actors");
     const synopsis = document.getElementById("synopsis");
     
-    const nbActor = 4;
+    let actorsTab = [];
+    const nbActor = 5;
 
 
     //On initialise ensuite tous les elements au chargement
 
     genre.textContent = "Genre: ";
-    actors.textContent = "Acteurs: ";
+    actors.textContent = "Acteurs:";
 
 
 //fetch du fichier credits.json dans lequel nous avons le casting
@@ -25,17 +28,35 @@
         .then(data => {
             console.log(data);
 
-
+            
             for(let i=0 ; i<nbActor ; i++){
-                if(i===nbActor-1){
-                    actors.textContent += data.cast[i].name;
+                let a = document.createElement("p");
+                if(i===0){
+                    a.textContent = data.cast[i].name+", ";
+                    a.style.marginLeft = "5px";
+                }
+                else if(i===nbActor-1){
+                    a.textContent = data.cast[i].name
                 }else{
-                    actors.textContent += data.cast[i].name+", ";
+                    a.textContent = data.cast[i].name+", ";
                 }
                 
+                a.id = `actor${i}`;
+                a.style.paddingRight = "3px";
+                a.style.paddingLeft = "3px";
+                a.style.cursor = "pointer";
+                a.addEventListener("mouseover", ()=>{
+                    let b = document.createElement("img");
+                    b.src = "https://image.tmdb.org/t/p/original/"+data.cast[i].profile_path;
+                    b.style.width = "60px";
+                    b.style.borderRadius = "10px";
+                    a.innerHTML="";
+                    a.appendChild(b);
+                })
+                actors.appendChild(a);
             }
 
-        })
+        });
 
 //fetch du fichier details.json dans lequel nous avons toutes les datas du film
     fetch('http://127.0.0.1:5500/json/details.json')
