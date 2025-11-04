@@ -14,6 +14,7 @@
     
     let actorsTab = [];
     let filmMakerTab = [];
+    let time;
     const nbActor = 5;
 
 
@@ -22,6 +23,32 @@
     genre.textContent = "Genre: ";
     actors.textContent = "Acteurs:";
     filmMaker.textContent = "Réalisé par: ";
+
+
+
+
+//fetch du fichier details.json dans lequel nous avons toutes les datas du film
+    fetch('http://127.0.0.1:5500/json/details.json')
+        .then(response => response.json())
+        .then(data => {
+console.log(data);
+
+            movieImg.src="https://image.tmdb.org/t/p/original/"+data.poster_path;
+            time = data.runtime;
+            time = " - "+Math.floor(time/60)+"h "+(time%60)+"min";
+            title.textContent = data.title;
+            date.textContent = data.release_date.slice(0,4);
+            grade.innerHTML ='<i class="fa-solid fa-star"></i> '+data.vote_average+"/10";
+            data.genres.forEach((element, index) => {   //puisque le film peut avoir plusieurs genre nous faisons une boucle for each afin de tous les récuprer et mettre en page
+
+                if(index===(data.genres.length-1)){
+                    genre.textContent += element.name+time; //On ne met pas de "/" au dernier élément
+                }else{genre.textContent += element.name+"/";}
+            });
+            synopsis.textContent = data.overview;
+        
+
+        })
 
 
 //fetch du fichier credits.json dans lequel nous avons le casting
@@ -82,24 +109,5 @@
 
         });
 
-//fetch du fichier details.json dans lequel nous avons toutes les datas du film
-    fetch('http://127.0.0.1:5500/json/details.json')
-        .then(response => response.json())
-        .then(data => {
-console.log(data);
 
-            movieImg.src="https://image.tmdb.org/t/p/original/"+data.poster_path;
-            title.textContent = data.title;
-            date.textContent = data.release_date.slice(0,4);
-            grade.innerHTML ='<i class="fa-solid fa-star"></i> '+data.vote_average+"/10";
-            data.genres.forEach((element, index) => {   //puisque le film peut avoir plusieurs genre nous faisons une boucle for each afin de tous les récuprer et mettre en page
-
-                if(index===(data.genres.length-1)){
-                    genre.textContent += element.name; //On ne met pas de "/" au dernier élément
-                }else{genre.textContent += element.name+"/";}
-            });
-            synopsis.textContent = data.overview;
-        
-
-        })
 
