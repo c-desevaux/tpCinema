@@ -125,7 +125,7 @@ body{
     
 }
 .navbar-small{
-    display: none;
+    display: none!important;
 }
 
 .right-content{
@@ -262,7 +262,7 @@ body{
         position: static!important;
     }
     .navbar-small{
-        display: flex;
+        display: flex!important;
         height: 8vh;
         color: white;
         background-color: rgb(25, 25, 65);
@@ -327,10 +327,16 @@ body{
         align-items: center;
     }
     .sub-2 > div{
+        row-gap: 0px;
         justify-content: center;
         align-items: center;
     }
+    .sub-2 > div > p{
+        text-align: center;
+        row-gap: 0px;
+    }
     .sub-2 > p{
+        text-align: center;
         font-size: 1rem;
     }
     .synopsis{
