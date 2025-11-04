@@ -112,13 +112,16 @@ body{
     letter-spacing: 2px;
     
 }
-.genre{
-    background-color: aqua;
-}
+
 
 .sub{
     font-size: 1.1rem;
     font-weight: 100;
+}
+
+
+.sub-2 > p{
+    margin: 2px;
 }
 
 .synopsis{
