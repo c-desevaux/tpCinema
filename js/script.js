@@ -31,6 +31,9 @@
             
             for(let i=0 ; i<nbActor ; i++){
                 let actor = document.createElement("p");
+                let character = document.createElement("p");
+                let container = document.createElement("div");
+                container.id = "portrait-container";
                 if(i===0){
                     actor.textContent = data.cast[i].name+", ";
                     actor.style.marginLeft = "5px";
@@ -40,7 +43,9 @@
                 }else{
                     actor.textContent = data.cast[i].name+", ";
                 }
-                
+
+                character.textContent = data.cast[i].character;
+                character.className = "actor-charact";
                 actor.id = `actor${i}`;
                 actor.style.paddingRight = "3px";
                 actor.style.paddingLeft = "3px";
@@ -51,7 +56,10 @@
                 actor.addEventListener("mouseover", ()=>{
                     
                     actorImg.src = "https://image.tmdb.org/t/p/original/"+data.cast[i].profile_path;
-                    actor.appendChild(actorImg);
+                    container.appendChild(actorImg);
+                    container.appendChild(character);
+                    actor.appendChild(container);
+                    
                 })
                 
                 actor.addEventListener("mouseleave", () => {

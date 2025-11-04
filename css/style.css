@@ -12,13 +12,20 @@ body{
     background-repeat: no-repeat;
     width: 100%;
 }
-.actor-img{
+
+#portrait-container{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     top: 0vh;
     right: 20vw;
+}
+.actor-img{
+    
     width: 100px;
     border-radius: 20px;
-    box-shadow: "8px 8px 10px 0 rgba(0,0,0,0.5)";
+    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
 }
 
 .btn-home{
