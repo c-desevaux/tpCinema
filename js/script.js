@@ -13,6 +13,7 @@
     const synopsis = document.getElementById("synopsis");
     
     let actorsTab = [];
+    let filmMakerTab = [];
     const nbActor = 5;
 
 
@@ -20,6 +21,7 @@
 
     genre.textContent = "Genre: ";
     actors.textContent = "Acteurs:";
+    filmMaker.textContent = "Réalisé par: ";
 
 
 //fetch du fichier credits.json dans lequel nous avons le casting
@@ -28,7 +30,7 @@
         .then(data => {
             console.log(data);
 
-            
+            //Partie récupération des acteurs
             for(let i=0 ; i<nbActor ; i++){
                 let actor = document.createElement("p");
                 let character = document.createElement("p");
@@ -70,13 +72,21 @@
                 actors.appendChild(actor);
             }
 
+            //Partie récupération du réalisateur
+            data.crew.forEach(element => {      //On cherche dans tous le json les réalisateurs
+                if(element.job==="Director"){
+                    filmMakerTab.push(element.name);    //On stock les noms des réalisateurs dans un tableau
+                }
+            });
+            filmMaker.textContent += filmMakerTab.join(", "); //On affiche les réalisateurs en les séparant par un "/"
+
         });
 
 //fetch du fichier details.json dans lequel nous avons toutes les datas du film
     fetch('http://127.0.0.1:5500/json/details.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+console.log(data);
 
             movieImg.src="https://image.tmdb.org/t/p/original/"+data.poster_path;
             title.textContent = data.title;
