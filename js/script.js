@@ -12,6 +12,7 @@
     const actors = document.getElementById("actors-container");
     const synopsis = document.getElementById("synopsis");
     
+    //On creer ensuite des variables globales qui nous serviront plus tard
     let actorsTab = [];
     let filmMakerTab = [];
     let time;
@@ -32,7 +33,7 @@
         .then(response => response.json())
         .then(data => {
 console.log(data);
-
+//Partie récupération des infos principales
             movieImg.src="https://image.tmdb.org/t/p/original/"+data.poster_path;
             time = data.runtime;
             time = " - "+Math.floor(time/60)+"h "+(time%60)+"min";
@@ -55,24 +56,24 @@ console.log(data);
     fetch('http://127.0.0.1:5500/json/credits.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+console.log(data);
 
             //Partie récupération des acteurs
-            for(let i=0 ; i<nbActor ; i++){
+            for(let i=0 ; i<nbActor ; i++){                     //On boucle pour récupérer les nbActor premiers acteurs   
                 let actor = document.createElement("p");
                 let character = document.createElement("p");
                 let container = document.createElement("div");
                 container.id = "portrait-container";
-                if(i===0){
+                if(i===0){                                       //On gère l'affichage du premier espacement 
                     actor.textContent = data.cast[i].name+", ";
                     actor.style.marginLeft = "4px";
                 }
-                else if(i===nbActor-1){
+                else if(i===nbActor-1){                         //Dernier acteur sans la virgule
                     actor.textContent = data.cast[i].name
                 }else{
-                    actor.textContent = data.cast[i].name+", ";
+                    actor.textContent = data.cast[i].name+", "; 
                 }
-
+                                                                //On ajoute le nom du personnage joué par l'acteur et on creer un element image avec sa photo
                 character.textContent = data.cast[i].character;
                 character.className = "actor-charact";
                 actor.id = `actor${i}`;
@@ -82,6 +83,8 @@ console.log(data);
                 let actorImg = document.createElement("img");
                 let actorText = actor.textContent;
                 actorImg.className = "actor-img";
+
+                //On fait un evenement mouse over pour afficher la photo et le personnage joué par l'acteur
                 actor.addEventListener("mouseover", ()=>{
                     
                     actorImg.src = "https://image.tmdb.org/t/p/original/"+data.cast[i].profile_path;
@@ -91,6 +94,7 @@ console.log(data);
                     
                 })
                 
+                //On fait un evenement mouse leave pour retirer la photo et le personnage joué par l'acteur
                 actor.addEventListener("mouseleave", () => {
                    
                     actor.innerHTML = "";
