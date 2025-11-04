@@ -38,7 +38,7 @@
                 container.id = "portrait-container";
                 if(i===0){
                     actor.textContent = data.cast[i].name+", ";
-                    actor.style.marginLeft = "5px";
+                    actor.style.marginLeft = "4px";
                 }
                 else if(i===nbActor-1){
                     actor.textContent = data.cast[i].name
@@ -49,8 +49,8 @@
                 character.textContent = data.cast[i].character;
                 character.className = "actor-charact";
                 actor.id = `actor${i}`;
-                actor.style.paddingRight = "3px";
-                actor.style.paddingLeft = "3px";
+                actor.style.paddingRight = "2px";
+                actor.style.paddingLeft = "2px";
                 actor.style.cursor = "pointer";
                 let actorImg = document.createElement("img");
                 let actorText = actor.textContent;
