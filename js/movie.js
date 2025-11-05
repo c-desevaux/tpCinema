@@ -10,6 +10,7 @@
     const actors = document.getElementById("actors-container");
     const synopsis = document.getElementById("synopsis");
 
+    const btnTrailer = document.getElementById("btn-trailer");
     const smallHome = document.getElementById("small-home");
 
     const apiKey = "42d462f5c882e0bf35326fd50db4cae6";
@@ -32,17 +33,36 @@
     let subGrade;
 
     let filmId = urlId.get('id');
+
+    let urlVideo = `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${apiKey}&language=fr-FR`;              //On tappe dans l'api qui a les clefs youtube des trailer
+
+        fetch(urlVideo)
+            .then(response => response.json())
+            .then(data => {
+                let yKey = data.results[0].key;
+                btnTrailer.addEventListener("click", () => {
+                    window.location.src=`https://www.youtube.com/embed/${yKey}`;
+                    
+            
+                
+console.log(window.location.src);
+                })
+console.log(data.results);
+console.log("clefs youtube: "+yKey);
+            });
+
     let urlDetails=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
     //fetch du fichier details.json dans lequel nous avons toutes les datas du film
     fetch(urlDetails)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+console.log(data);
+
             //Partie récupération des infos principales
             movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;
             time = data.runtime;
-            time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";
+            time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";              //On transforme les minutes en heure minute
             title.textContent = data.title;
             date.textContent = data.release_date.slice(0, 4);
             if(data.vote_average!=0){
@@ -70,7 +90,7 @@
     fetch(urlCredits)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+console.log(data);
 
             //Partie récupération des acteurs
             for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -133,9 +153,11 @@
             if(filmMakerTab.length<1){
                 filmMaker.innerHTML="";
             }else{filmMaker.textContent += filmMakerTab.join(", "); //On affiche les réalisateurs en les séparant par un "/"
-}
+            }
             
         });
+
+        
 
         smallHome.addEventListener("click", () => {
             window.location.href="../index.html";
