@@ -395,7 +395,7 @@ body {
     .search{
         width: 40vw;
     }
-
+}
 
 @media (max-width: 1220px){
     .btn-home {
@@ -447,6 +447,10 @@ body {
         height: 50px;
         border-radius: 50px;
     }
+    body{
+       
+        padding-top: 0;
+    }
     .home{
         display: none;
     }
@@ -469,6 +473,7 @@ body {
     }
     nav{
         position: static!important;
+     
     }
     .navbar-small{
         display: flex!important;
