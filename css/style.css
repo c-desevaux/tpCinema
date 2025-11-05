@@ -109,6 +109,7 @@ nav a:hover,
     color: white;
 }
 
+
 /* --- CAROUSEL DES AFFICHES --- */
 
 .film-card {
@@ -363,7 +364,12 @@ body {
     font-size: 4rem;
 }
 
-
+.trailer{
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
+}
 
 
 .sub{

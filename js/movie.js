@@ -11,6 +11,7 @@
     const synopsis = document.getElementById("synopsis");
 
     const btnTrailer = document.getElementById("btn-trailer");
+    const trailerContainer = document.getElementById("trailer-container");
     const smallHome = document.getElementById("small-home");
 
     const apiKey = "42d462f5c882e0bf35326fd50db4cae6";
@@ -41,7 +42,15 @@
             .then(data => {
                 let yKey = data.results[0].key;
                 btnTrailer.addEventListener("click", () => {
-                    window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
+                    //window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
+                    trailerContainer.innerHTML="";
+                    trailerContainer.innerHTML=`
+                    <iframe class="trailer"
+                        src="https://www.youtube.com/embed/${yKey}?autoplay=1" 
+                        frameborder="0" allowfullscreen
+                        allow="autoplay; encrypted-media">
+                        </iframe>
+                    `;
                     
             
                 
