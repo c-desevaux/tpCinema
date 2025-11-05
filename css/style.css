@@ -81,6 +81,7 @@ body {
     color: white;
 }
 
+
 /* --- CAROUSEL DES AFFICHES --- */
 
 .film-card {
@@ -356,7 +357,12 @@ body {
     font-size: 4rem;
 }
 
-
+.trailer{
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
+}
 
 
 .sub {
@@ -450,8 +456,11 @@ body {
         height: 50px;
         border-radius: 50px;
     }
-
-    .home {
+    body{
+       
+        padding-top: 0;
+    }
+    .home{
         display: none;
     }
 
@@ -473,9 +482,9 @@ body {
         height: 40vh;
         margin-bottom: 20px;
     }
-
-    nav {
-        position: static !important;
+    nav{
+        position: static!important;
+     
     }
 
     .navbar-small {
