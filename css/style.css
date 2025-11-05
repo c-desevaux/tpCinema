@@ -627,8 +627,27 @@ body {
 }
 
 @media (max-width: 500px){
+
+
+    .btn-home{
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    nav{
+        display: flex;
+        margin: 0;
+        padding: 0;
+        padding-top: 5px;
+        padding-bottom: 15px;
+        flex-direction: column!important;
+        align-items: center!important;
+        justify-content: center!important;
+    }
+
+    
+
     .trailer{
-            height: 50vw;
-            width: 90vw;
-        }
+        height: 50vw;
+        width: 90vw;
+    }
 }
