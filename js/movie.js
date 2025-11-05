@@ -80,6 +80,7 @@
                 actor.id = `actor${i}`;
                 actor.style.paddingRight = "2px";
                 actor.style.paddingLeft = "2px";
+                actor.style.textDecoration = "underline";
                 actor.style.cursor = "pointer";
                 let actorImg = document.createElement("img");
                 let actorText = actor.textContent;

@@ -164,7 +164,7 @@ body {
     flex-direction: column;
     align-items: center;
     top: 0vh;
-    right: 20vw;
+    right: 20vh;
 }
 
 .actor-img{
@@ -174,20 +174,6 @@ body {
     box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
 }
 
-#portrait-container{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 0vh;
-    right: 20vw;
-}
-.actor-img{
-    
-    width: 100px;
-    border-radius: 20px;
-    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
-}
 
 .btn-home{
     text-decoration: none;
@@ -401,6 +387,13 @@ body {
     font-size: 4rem;
 }
 
+@media (max-width: 1450px){
+    .actor-img{
+    
+        right: 10vh
+    }
+}
+
 
 @media (max-width: 1220px){
     .btn-home {
@@ -479,7 +472,7 @@ body {
         display: flex!important;
         height: 8vh;
         color: white;
-        background-color: rgb(25, 25, 65);
+        background-color: rgb(0, 0, 0);
         backdrop-filter: blur(10px);
         opacity: 0.9;
     }
@@ -569,7 +562,7 @@ body {
 }
 
 @media (max-width: 850px) {
-    nav {
+    nav {  
         top: auto;
         /* on enlève la position en haut */
         bottom: 0;

@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const li = document.createElement("li");
                 li.classList.add("splide__slide");
                 li.innerHTML = `
-                <a href="movie.html">
+                <a href="movie.html?id=${movie.id}">
                     <div class="film-card">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                     <div class="film-info">
