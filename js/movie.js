@@ -10,6 +10,7 @@
     const actors = document.getElementById("actors-container");
     const synopsis = document.getElementById("synopsis");
     const apiKey = "42d462f5c882e0bf35326fd50db4cae6";
+    const urlId = new URLSearchParams(window.location.search);
 
     //On creer ensuite des variables globales qui nous serviront plus tard
     let actorsTab = [];
@@ -24,7 +25,7 @@
     actors.textContent = "Acteurs:";
     filmMaker.textContent = "Réalisé par: ";
 
-    let filmId = 300;
+    let filmId = urlId.get('id');
     let urlDetails=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
     //fetch du fichier details.json dans lequel nous avons toutes les datas du film
