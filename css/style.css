@@ -1,9 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-a{
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* --- NAVBAR --- */
+
+nav {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a,
+.btn-log {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover,
+.btn-log:hover {
+    color: #00bfff;
+}
+
+/* --- CAROUSEL DES BANDES-ANNONCES --- */
+
+
+#hero-carousel {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#hero-carousel .splide__slide {
+    position: relative;
+    height: 95vh;
+    overflow: hidden;
+}
+
+#hero-carousel iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.film-overlay {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    z-index: 10;
+}
+
+.film-overlay h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.film-overlay p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.film-overlay button {
+    background: #23a3ce;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.film-overlay button:hover {
+    background: #0099cc;
+}
+
+/* ---  TITRE DE PAGE --- */
+
+.titrePage {
+    font-size: 400%;
+    text-align: center;
+    color: white;
+    padding-bottom: 30px;
+}
+
+/* ---  TITRE DE SECTION --- */
+
+.titreSection {
+    font-size: 200%;
+    text-align: left;
+    padding-left: 20px;
+    color: white;
+}
+
+/* --- CAROUSEL DES AFFICHES --- */
+
+.film-card {
+    text-align: center;
+    color: #fff;
+    background: #111111f7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.979);
+    margin-bottom: 20px;
+}
+
+.film-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.film-info {
+    padding: 10px;
+}
+
+.film-info h3 {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: rgb(246, 245, 244);
+}
+
+.film-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+
+/*------- MOVIE - CORENTIN -------*/
+
+a {
     text-decoration: none;
 }
 
-body{
+body {
     padding-top: 10px;
     background-image: url("../ressources/background.png");
     background-position: center center;
@@ -13,22 +160,7 @@ body{
     width: 100%;
 }
 
-#portrait-container{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 0vh;
-    right: 20vw;
-}
-.actor-img{
-    
-    width: 100px;
-    border-radius: 20px;
-    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
-}
-
-.btn-home{
+.btn-home {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -37,17 +169,17 @@ body{
     letter-spacing: 20px;
 }
 
-.btn-log{
+.btn-log {
     border-radius: 100px;
     color: #A8A9BC;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     width: 150px;
     height: 50px;
-    
+
 }
 
-.btn-log:hover{
+.btn-log:hover {
     background-color: rgba(255, 255, 255, 0.9);
     transition: all 0.3s ease;
     color: #2d2e36;
@@ -96,11 +228,11 @@ body{
     background-position: right center;
 }
 
-.home{
+.home {
     color: white;
 }
 
-.loupe{
+.loupe {
     position: absolute;
     color: white;
     top: 20px;
@@ -108,39 +240,11 @@ body{
     font-weight: 100;
 }
 
-.movie-container{
-    position: relative;
-    margin-top: 20vh;
-    color: white;
-    
-
-}
-.movie-container > img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 60vh;
-    border-radius: 10px;
-    margin-right: 5%;
-    
-}
-.navbar-small{
-    display: none!important;
-}
-
-.right-content{
-    position: absolute;
-    padding-right: 5rem;
-    top: 0 ;
-    left: 25rem;
-    height: 50vw;
-}
-
-#search-container{
+#search-container {
     position: relative;
 }
 
-.search{
+.search {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 70px;
@@ -153,7 +257,7 @@ body{
 
 }
 
-.search::placeholder{
+.search::placeholder {
 
     padding: 5px;
     color: #A8A9BC;
@@ -161,195 +265,53 @@ body{
     font-weight: 100;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    
+
 }
 
 
-
-
-.sub{
-    font-size: 1.1rem;
-    font-weight: 100;
-}
-
-
-.sub-2 > p{
-    margin-bottom: 2px;
-}
-
-.synopsis{
-    text-align: justify;
-    
-    font-size: 1.1rem;
-    font-weight: 100;
-}
-
-.title{
-    font-size: 4rem;
-}
-
-
-@media (max-width: 1220px){
-    .btn-home{
+@media (max-width: 1220px) {
+    .btn-home {
         font-size: 4rem;
     }
-    
-    .loupe{
+
+    .loupe {
         position: absolute;
         color: white;
         top: 17px;
         left: 15px;
         font-weight: 100;
     }
-    
-    .search{
+
+    .search {
         font-size: 1.1rem;
         height: 3rem;
         width: 30vw;
     }
-    .search::placeholder{
+
+    .search::placeholder {
         font-size: 1.1rem;
         padding: 0;
     }
 }
 
-@media (max-width: 1150px){
-    
-.btn-home{
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 950px){
-
-    #actors-container{
-        display: none;
-        
+@media (max-width: 850px) {
+    nav {
+        top: auto;
+        /* on enlève la position en haut */
+        bottom: 0;
+        /* on colle la nav en bas */
+        padding: 10px 0;
+        background: rgba(0, 0, 0, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .btn-watch{
-        visibility: hidden;
-        display: none!important;
-        
-    }
-    .btn-watch-small{
-        visibility: visible;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-    }
-    .home{
-        display: none;
-    }
-    .movie-container{
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0px;
-        margin: 50px;
-        margin-bottom: 12vh;
-        
-    }
-    .movie-container > img{
-        position: relative;
-        justify-self: center;
-        margin: 0;
-        padding: 0;
-        height: 40vh;
-        margin-bottom: 20px;
-    }
-    nav{
-        position: static!important;
-    }
-    .navbar-small{
-        display: flex!important;
-        height: 8vh;
-        color: white;
-        background-color: rgb(25, 25, 65);
-        backdrop-filter: blur(10px);
-        opacity: 0.9;
-    }
-    .navbar-small > div{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-top: 15px;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        cursor: pointer;
-        font-size: 1.2rem;
-    }
-    .navbar-small > div:hover{
-        background-color: rgba(255, 255, 255, 0.12);
-        transition: all 0.3s ease;
-    }
-   
-    .navbar-small > div p{
-        padding-top: 4px;
-        font-size: 0.5rem;
+    nav a,
+    .btn-log {
+        font-size: 0.8rem;
     }
 
-    #portrait-container{
+    #search-container {
         display: none;
+        /* on masque la barre de recherche pour plus de clarté */
     }
-    .right-content{
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        top: 0 ;
-        left: 0;
-        height: auto;
-        margin: 0!important;
-        padding: 0!important;
-        
-        
-    }
-    .search{
-        display: none;
-    }
-    #search-container{
-        display: none;
-    }
-    .sub{
-        display: flex;
-        width: 75%;
-        justify-content: space-between;
-    }
-    .sub > p{
-        font-size: 1rem;
-    }
-    .sub > div{
-        font-size: 1rem;
-    }
-    .sub-2{
-        justify-content: center;
-        align-items: center;
-    }
-    .sub-2 > div{
-        row-gap: 0px;
-        justify-content: center;
-        align-items: center;
-    }
-    .sub-2 > div > p{
-        text-align: center;
-        padding: 0;
-        margin: 0;
-        row-gap: 0px;
-    }
-    .sub-2 > p{
-        text-align: center;
-        font-size: 1rem;
-    }
-    .synopsis{
-        text-align: center;
-        font-size: 0.9rem;
-    }
-    .title{
-        
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    
 }
