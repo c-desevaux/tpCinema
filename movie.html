@@ -8,6 +8,7 @@
     <link rel="icon" href="ressources/favicon.ico" />
     <title>FILMS</title>
 </head>
+
 <body>
 
 
@@ -26,24 +27,63 @@
         </nav>
     </div>
 
-    <div id="movie-container">
-        <img>
-        <h1 id="title">The Matrix</h1>
-        <p id="date">1999</p>
-        <p id="genre">Genre: Science-Fiction/Action</p>
-        <p id="film-maker">Réalisateurs: Lana & Lilly Wachowski</p>
-        <p id="actors">Acteurs: Kenyu Reeves, ...</p>
-        <p id="synopsis">Alors qu’ils espéraient une nouvelle vie, Ed et Lorraine Warren se voient 
-            impliqués dans une dernière enquête…qu’ils n’auraient jamais dû accepter. 
-            Dans la maison de la famille Smurl, un mal ancien les attend. 
-            Un ennemi qu’ils croyaient à jamais enfoui... Découvrez comment les Warren
-             ont affronté le cas le plus maléfique de leur carrière, 
-             inspiré de faits réels qui ont terrorisé l’Amérique.
-        </p>
-        <button><i class="fa-solid fa-play"></i>Regarder</button>
+<!------------------------------------ CORPS ---------------------------------------->
+
+    <div id="movie-container" class="movie-container d-flex justify-content-center align-items-center ms-5">
+        <img id="movie-img" src="ressources/matrixCover.jpg">
+        
+        <div class="d-flex flex-column ms-4 right-content ">
+            <h1 id="title" class="title">The Matrix</h1>
+            <div class="d-flex sub ms-1">
+                <p id="date" class="date me-3">1999</p>
+                <p class="ml" id="grade"><i class="fa-solid fa-star"></i> 8/10</p>
+            </div>
+            <div class="d-flex flex-column sub-2 mb-3">
+                <p id="genre" class="genre">Genre: Science-Fiction/Action</p>
+                <p id="film-maker" class="film-maker">Réalisateurs: Lana & Lilly Wachowski</p>
+                <div id="actors-container" class="d-flex flex-wrap"></div>
+            </div>
+            
+            <p id="synopsis" class="synopsis text-justify mb-4 pb-2">Alors qu’ils espéraient une nouvelle vie, Ed et Lorraine Warren se voient
+                impliqués dans une dernière enquête…qu’ils n’auraient jamais dû accepter.              
+                Dans la maison de la famille Smurl, un mal ancien les attend.                           
+                Un ennemi qu’ils croyaient à jamais enfoui... Découvrez comment les Warren              
+                ont affronté le cas le plus maléfique de leur carrière, 
+                inspiré de faits réels qui ont terrorisé l’Amérique.
+            </p>
+            <button class="btn-watch d-flex justify-content-around align-items-center p-3"><i class="fa-solid fa-play"></i>Regarder</button>
+            <button class="btn-watch-small d-flex justify-content-around align-items-center p-3"><i class="fa-solid fa-play"></i></button>
+
+        </div>
+
+    </div>
+
+    <!------------------------------------ NAVBAR ---------------------------------------->
+
+    <div id="navbar-small" class="navbar-small d-flex flex-row w-100 justify-content-around align-items-center fixed-bottom">
+        <div>
+            <i class="fa-solid fa-house"></i>
+            <p>Accueil</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-heart"></i>
+            <p>Mes films</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-bookmark"></i>
+            <p>Ma liste</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-download"></i>
+            <p>Télécharger</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <p>Recherche</p>
+        </div>
     </div>
     
-
+    <script type="module" src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/8a32face71.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
