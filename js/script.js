@@ -58,7 +58,7 @@ console.log(API_URL);
                 const li = document.createElement("li");
                 li.classList.add("splide__slide");
                 li.innerHTML = `
-                <a href="movie.html">
+                <a href="movie.html?id=${movie.id}">
                     <div class="film-card">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                     <div class="film-info">
@@ -72,14 +72,15 @@ console.log(API_URL);
             });
 
             new Splide("#films", {
-                perPage: 4,
+                perPage: 6,
                 gap: "1rem",
                 autoplay: true,
+                type: 'loop',
                 rewind: true,
                 breakpoints: {
-                    1024: { perPage: 3 },
-                    768: { perPage: 2 },
-                    480: { perPage: 1 },
+                    1024: { perPage: 5 },
+                    768: { perPage: 3 },
+                    480: { perPage: 2 },
                 },
             }).mount();
         })
