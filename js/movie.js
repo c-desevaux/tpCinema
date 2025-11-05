@@ -9,6 +9,7 @@
     const filmMaker = document.getElementById("film-maker");
     const actors = document.getElementById("actors-container");
     const synopsis = document.getElementById("synopsis");
+    const apiKey = "42d462f5c882e0bf35326fd50db4cae6";
 
     //On creer ensuite des variables globales qui nous serviront plus tard
     let actorsTab = [];

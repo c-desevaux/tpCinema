@@ -1,3 +1,5 @@
+
+
 "use strict";
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -55,14 +57,16 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const li = document.createElement("li");
                 li.classList.add("splide__slide");
                 li.innerHTML = `
-            <div class="film-card">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-            <div class="film-info">
-                <h3>${movie.title}</h3>
-                <p>📅 ${movie.release_date}</p>
-                <p>⭐ ${movie.vote_average}/10</p>
-            </div>
-            </div>`;
+                <a href="movie.html">
+                    <div class="film-card">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                    <div class="film-info">
+                        <h3>${movie.title}</h3>
+                        <p>📅 ${movie.release_date}</p>
+                        <p>⭐ ${movie.vote_average}/10</p>
+                    </div>
+                    </div>
+                </a>`;
                 liste.appendChild(li);
             });
 
