@@ -388,12 +388,14 @@ body {
 }
 
 @media (max-width: 1450px){
-    .actor-img{
-    
-        right: 10vh
+    #portrait-container{
+        
+        right: 10vh;
+    }
+    .search{
+        width: 40vw;
     }
 }
-
 
 @media (max-width: 1220px){
     .btn-home {
