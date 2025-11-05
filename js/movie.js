@@ -25,6 +25,9 @@
     actors.textContent = "Acteurs:";
     filmMaker.textContent = "Réalisé par: ";
 
+    let fullGrade;
+    let subGrade;
+
     let filmId = urlId.get('id');
     let urlDetails=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
@@ -39,9 +42,13 @@
             time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";
             title.textContent = data.title;
             date.textContent = data.release_date.slice(0, 4);
-            let fullGrade = data.vote_average.toString();
-            let subGrade = fullGrade.substr(0, 3);
-            grade.innerHTML = '<i class="fa-solid fa-star"></i> ' + subGrade + "/10";
+            if(data.vote_average!=0){
+                fullGrade = data.vote_average.toString();
+                subGrade = fullGrade.substr(0, 3)+ "/10";
+                grade.innerHTML = '<i class="fa-solid fa-star"></i> ' + subGrade;
+            }else{grade.innerHTML=""}
+            
+            
             data.genres.forEach((element, index) => {   //puisque le film peut avoir plusieurs genre nous faisons une boucle for each afin de tous les récuprer et mettre en page
 
                 if (index === (data.genres.length - 1)) {
