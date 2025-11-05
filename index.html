@@ -14,14 +14,13 @@
 
 <body>
 
-<!------------------------------------ NAVBAR ---------------------------------------->
-
+<!----- NAVBAR ---->
 <div class="d-flex justify-content-center align-items-center" id="nav-container">
   <nav class="nav d-flex justify-content-around align-items-center w-100 fixed-top">
       <a href="index.html" class="btn-home">FILMS</a>
 
       <div id="search-container">
-          <i class="fa-solid fa-magnifying-glass loupe" ></i>
+          <i class="fa-solid fa-magnifying-glass loupe"></i>
           <input class="search" id="search" placeholder="Rechercher un film">
       </div>
       <a href="index.html" class="home">Accueil</a>
@@ -29,23 +28,25 @@
   </nav>
 </div>
 
-
-
-
-
-
-
-
-<!------------------------------------ BODY ---------------------------------------->
-
-
-  <div class="splide" id="films">
-    <div class="splide__track">
-      <ul class="splide__list" id="liste-film">
-        <!-- Les films seront ajoutés ici par JavaScript -->
-      </ul>
-    </div>
+<!-------- CAROUSEL DES BANDES-ANNONCES ------->
+<section class="splide" id="hero-carousel">
+  <div class="splide__track">
+    <ul class="splide__list" id="hero-list">
+      <!-- Les trailers seront animés via le carousel de SPLIDEJS -->
+    </ul>
   </div>
+</section>
+
+<!----- CAROUSEL D’AFFICHES ----->
+<div class="splide" id="films">
+  <div class="splide__track">
+    <ul class="splide__list" id="liste-film">
+      <!-- Les films seront animés via le carousel de SPLIDEJS -->
+    </ul>
+  </div>
+</div>
+
+
   <script src="/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
