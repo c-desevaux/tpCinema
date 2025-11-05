@@ -9,6 +9,9 @@
     const filmMaker = document.getElementById("film-maker");
     const actors = document.getElementById("actors-container");
     const synopsis = document.getElementById("synopsis");
+
+    const smallHome = document.getElementById("small-home");
+
     const apiKey = "42d462f5c882e0bf35326fd50db4cae6";
     const urlId = new URLSearchParams(window.location.search);
 
@@ -133,3 +136,10 @@
 }
             
         });
+
+        smallHome.addEventListener("click", () => {
+            window.location.href="../index.html";
+        });
+
+
+        
