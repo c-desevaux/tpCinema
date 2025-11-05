@@ -15,7 +15,6 @@
     let actorsTab = [];
     let filmMakerTab = [];
     let time;
-    let url;
     const nbActor = 5;
 
 
@@ -26,10 +25,10 @@
     filmMaker.textContent = "Réalisé par: ";
 
     let filmId = 603
-    url=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
+    let urlDetails=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
     //fetch du fichier details.json dans lequel nous avons toutes les datas du film
-    fetch(url)
+    fetch(urlDetails)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -51,9 +50,9 @@
 
         })
 
-
+    let urlCredits = `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=${apiKey}&language=fr-FR`;
     //fetch du fichier credits.json dans lequel nous avons le casting
-    fetch('json/credits.json')
+    fetch(urlCredits)
         .then(response => response.json())
         .then(data => {
             console.log(data);
