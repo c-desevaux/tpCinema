@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     /* ------ CAROUSEL DES AFFICHES DE FILMS ------- */
     const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&with_original_language=fr&sort_by=release_date.desc&primary_release_date.gte=2025-11-01&primary_release_date.lte=2025-11-07`;
+console.log(API_URL);
 
     fetch(API_URL)
         .then(response => response.json())
@@ -71,14 +72,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             new Splide("#films", {
-                perPage: 4,
+                perPage: 6,
                 gap: "1rem",
                 autoplay: true,
+                type: 'loop',
                 rewind: true,
                 breakpoints: {
-                    1024: { perPage: 3 },
-                    768: { perPage: 2 },
-                    480: { perPage: 1 },
+                    1024: { perPage: 5 },
+                    768: { perPage: 3 },
+                    480: { perPage: 2 },
                 },
             }).mount();
         })
