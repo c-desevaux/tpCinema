@@ -121,11 +121,15 @@
                 }
             }
             //Partie récupération du réalisateur
+            
             data.crew.forEach(element => {      //On cherche dans tous le json les réalisateurs
                 if (element.job === "Director") {
                     filmMakerTab.push(element.name);    //On stock les noms des réalisateurs dans un tableau
                 }
             });
-            filmMaker.textContent += filmMakerTab.join(", "); //On affiche les réalisateurs en les séparant par un "/"
-
+            if(filmMakerTab.length<1){
+                filmMaker.innerHTML="";
+            }else{filmMaker.textContent += filmMakerTab.join(", "); //On affiche les réalisateurs en les séparant par un "/"
+}
+            
         });
