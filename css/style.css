@@ -53,8 +53,29 @@ body{
     transition: all 0.3s ease;
     color: #2d2e36;
 }
+.btn-watch-small{
+    visibility: hidden;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    height: 45px;
+    width: 150px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,rgba(53, 126, 221, 1) 0%, rgba(39, 59, 162, 1) 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
+    background-size: 200% 100%;
+    background-position: left center;
+    cursor: pointer;
+    transition: background-position 0.2s ease-in-out;
+}
+
+.btn-watch-small:hover{
+    /* background: linear-gradient(90deg,rgba(39, 59, 162, 1) 0%, rgba(53, 126, 221, 1) 100%); */
+    background-position: right center;
+}
 
 .btn-watch{
+    display: block;
     color: white;
     border: none;
     font-size: 1.1rem;
@@ -104,6 +125,9 @@ body{
     margin-right: 5%;
     
 }
+.navbar-small{
+    display: none!important;
+}
 
 .right-content{
     position: absolute;
@@ -142,6 +166,8 @@ body{
 }
 
 
+
+
 .sub{
     font-size: 1.1rem;
     font-weight: 100;
@@ -149,7 +175,7 @@ body{
 
 
 .sub-2 > p{
-    margin: 2px;
+    margin-bottom: 2px;
 }
 
 .synopsis{
@@ -188,6 +214,143 @@ body{
     }
 }
 
-@media (max-width: 850px){
+@media (max-width: 1150px){
+    
+.btn-home{
+        font-size: 3rem;
+    }
+}
 
+@media (max-width: 950px){
+
+    #actors-container{
+        display: none;
+        
+    }
+
+    .btn-watch{
+        visibility: hidden;
+        display: none!important;
+        
+    }
+    .btn-watch-small{
+        visibility: visible;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+    .home{
+        display: none;
+    }
+    .movie-container{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0px;
+        margin: 50px;
+        margin-bottom: 12vh;
+        
+    }
+    .movie-container > img{
+        position: relative;
+        justify-self: center;
+        margin: 0;
+        padding: 0;
+        height: 40vh;
+        margin-bottom: 20px;
+    }
+    nav{
+        position: static!important;
+    }
+    .navbar-small{
+        display: flex!important;
+        height: 8vh;
+        color: white;
+        background-color: rgb(25, 25, 65);
+        backdrop-filter: blur(10px);
+        opacity: 0.9;
+    }
+    .navbar-small > div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 15px;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    .navbar-small > div:hover{
+        background-color: rgba(255, 255, 255, 0.12);
+        transition: all 0.3s ease;
+    }
+   
+    .navbar-small > div p{
+        padding-top: 4px;
+        font-size: 0.5rem;
+    }
+
+    #portrait-container{
+        display: none;
+    }
+    .right-content{
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        top: 0 ;
+        left: 0;
+        height: auto;
+        margin: 0!important;
+        padding: 0!important;
+        
+        
+    }
+    .search{
+        display: none;
+    }
+    #search-container{
+        display: none;
+    }
+    .sub{
+        display: flex;
+        width: 75%;
+        justify-content: space-between;
+    }
+    .sub > p{
+        font-size: 1rem;
+    }
+    .sub > div{
+        font-size: 1rem;
+    }
+    .sub-2{
+        justify-content: center;
+        align-items: center;
+    }
+    .sub-2 > div{
+        row-gap: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+    .sub-2 > div > p{
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        row-gap: 0px;
+    }
+    .sub-2 > p{
+        text-align: center;
+        font-size: 1rem;
+    }
+    .synopsis{
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .title{
+        
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    
 }
