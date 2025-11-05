@@ -15,6 +15,7 @@
     let actorsTab = [];
     let filmMakerTab = [];
     let time;
+    let url;
     const nbActor = 5;
 
 
@@ -24,11 +25,11 @@
     actors.textContent = "Acteurs:";
     filmMaker.textContent = "Réalisé par: ";
 
-
-
+    let filmId = 603
+    url=`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
     //fetch du fichier details.json dans lequel nous avons toutes les datas du film
-    fetch('json/details.json')
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             console.log(data);
