@@ -41,7 +41,7 @@
             .then(data => {
                 let yKey = data.results[0].key;
                 btnTrailer.addEventListener("click", () => {
-                    window.location.src=`https://www.youtube.com/embed/${yKey}`;
+                    window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
                     
             
                 
