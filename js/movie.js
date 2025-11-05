@@ -10,7 +10,6 @@ const filmMaker = document.getElementById("film-maker");
 const actors = document.getElementById("actors-container");
 const synopsis = document.getElementById("synopsis");
 
-const btnTrailer = document.getElementById("btn-trailer");
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
 
@@ -43,7 +42,11 @@ fetch(urlVideo)
 
         if (data.results[0]) {
             let yKey = data.results[0].key;
-            btnTrailer.addEventListener("click", () => {
+
+            document.querySelectorAll(".btn-trailer").forEach(btnTrailer => {
+                
+
+                btnTrailer.addEventListener("click", () => {
                 //window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
                 trailerContainer.innerHTML = "";
                 trailerContainer.innerHTML = `
@@ -54,7 +57,12 @@ fetch(urlVideo)
                             </iframe>
                         `;
 
-            })
+                })
+            });
+
+            
+
+            
         }
 
 

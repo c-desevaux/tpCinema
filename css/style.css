@@ -470,6 +470,8 @@ body {
 
     }
 
+    
+
     .btn-watch {
         visibility: hidden;
         display: none !important;
@@ -618,5 +620,15 @@ body {
         text-align: center;
     }
 
+    .trailer{
+        height: 300px;
+        width: 500px;
+    }
+}
 
+@media (max-width: 500px){
+    .trailer{
+            height: 50vw;
+            width: 90vw;
+        }
 }
