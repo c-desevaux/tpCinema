@@ -11,6 +11,35 @@ body {
     overflow-x: hidden;
 }
 
+
+/* --- NAVBAR --- */
+
+nav {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a,
+.btn-log {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover,
+.btn-log:hover {
+    color: #00bfff;
+}
+
 /* --- CAROUSEL DES BANDES-ANNONCES --- */
 
 
