@@ -66,17 +66,19 @@
                 let character = document.createElement("p");
                 let container = document.createElement("div");
                 container.id = "portrait-container";
-                if (i === 0) {                                       //On gère l'affichage du premier espacement 
+                if (i === 0 && (data.cast.length>1)) {                                       //On gère l'affichage du premier espacement 
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
                 }
-                else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
+                else if (i === nbActor - 1 || data.cast.length===1) {                         //Dernier acteur sans la virgule
                     actor.textContent = data.cast[i].name
                 } else {
                     actor.textContent = data.cast[i].name + ", ";
                 }
                 //On ajoute le nom du personnage joué par l'acteur et on creer un element image avec sa photo
-                character.textContent = data.cast[i].character;
+                if(data.cast[i].character===""){
+                    character.textContent=data.cast[i].name;
+                }else{character.textContent = data.cast[i].character;}
                 character.className = "actor-charact";
                 actor.id = `actor${i}`;
                 actor.style.paddingRight = "2px";
