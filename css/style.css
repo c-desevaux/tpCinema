@@ -1,9 +1,43 @@
+/*------- INDEX - MICKAEL -------*/
 
-a{
+.film-card {
+    text-align: center;
+    color: #fff;
+    background: #111111f7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.979);
+}
+
+.film-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.film-info {
+    padding: 10px;
+}
+
+.film-info h3 {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: rgb(246, 245, 244);
+}
+
+.film-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/*------- MOVIE - CORENTIN -------*/
+
+a {
     text-decoration: none;
 }
 
-body{
+body {
     padding-top: 10px;
     background-image: url("../ressources/background.png");
     background-position: center center;
@@ -13,7 +47,7 @@ body{
     width: 100%;
 }
 
-.btn-home{
+.btn-home {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -22,27 +56,27 @@ body{
     letter-spacing: 20px;
 }
 
-.btn-log{
+.btn-log {
     border-radius: 100px;
     color: #A8A9BC;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     width: 150px;
     height: 50px;
-    
+
 }
 
-.btn-log:hover{
+.btn-log:hover {
     background-color: rgba(255, 255, 255, 0.9);
     transition: all 0.3s ease;
     color: #2d2e36;
 }
 
-.home{
+.home {
     color: white;
 }
 
-.loupe{
+.loupe {
     position: absolute;
     color: white;
     top: 20px;
@@ -50,11 +84,11 @@ body{
     font-weight: 100;
 }
 
-#search-container{
+#search-container {
     position: relative;
 }
 
-.search{
+.search {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 70px;
@@ -67,7 +101,7 @@ body{
 
 }
 
-.search::placeholder{
+.search::placeholder {
 
     padding: 5px;
     color: #A8A9BC;
@@ -75,34 +109,33 @@ body{
     font-weight: 100;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    
+
 }
 
 
-@media (max-width: 1220px){
-    .btn-home{
+@media (max-width: 1220px) {
+    .btn-home {
         font-size: 4rem;
     }
-    
-    .loupe{
+
+    .loupe {
         position: absolute;
         color: white;
         top: 17px;
         left: 15px;
         font-weight: 100;
     }
-    
-    .search{
+
+    .search {
         font-size: 1.1rem;
         height: 3rem;
         width: 30vw;
     }
-    .search::placeholder{
+
+    .search::placeholder {
         font-size: 1.1rem;
         padding: 0;
     }
 }
 
-@media (max-width: 850px){
-
-}
+@media (max-width: 850px) {}
