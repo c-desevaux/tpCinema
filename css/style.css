@@ -160,7 +160,37 @@ body {
     width: 100%;
 }
 
-.btn-home {
+#portrait-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0vh;
+    right: 20vw;
+}
+.actor-img{
+    
+    width: 100px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
+}
+
+#portrait-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0vh;
+    right: 20vw;
+}
+.actor-img{
+    
+    width: 100px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 10px 0 rgba(0,0,0,0.5);
+}
+
+.btn-home{
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -184,8 +214,51 @@ body {
     transition: all 0.3s ease;
     color: #2d2e36;
 }
+.btn-watch-small{
+    visibility: hidden;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    height: 45px;
+    width: 150px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,rgba(53, 126, 221, 1) 0%, rgba(39, 59, 162, 1) 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
+    background-size: 200% 100%;
+    background-position: left center;
+    cursor: pointer;
+    transition: background-position 0.2s ease-in-out;
+}
 
-.home {
+.btn-watch-small:hover{
+    /* background: linear-gradient(90deg,rgba(39, 59, 162, 1) 0%, rgba(53, 126, 221, 1) 100%); */
+    background-position: right center;
+}
+
+.btn-watch{
+    display: block;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    height: 45px;
+    width: 150px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,rgba(53, 126, 221, 1) 0%, rgba(39, 59, 162, 1) 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
+    background-size: 200% 100%;
+    background-position: left center;
+    cursor: pointer;
+    transition: background-position 0.2s ease-in-out;
+    
+    
+}
+
+.btn-watch:hover{
+    /* background: linear-gradient(90deg,rgba(39, 59, 162, 1) 0%, rgba(53, 126, 221, 1) 100%); */
+    background-position: right center;
+}
+
+.home{
     color: white;
 }
 
@@ -195,6 +268,62 @@ body {
     top: 20px;
     left: 15px;
     font-weight: 100;
+}
+
+.movie-container {
+    position: relative;
+    margin-top: 20vh;
+    color: white;
+    
+
+}
+.movie-container > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60vh;
+    border-radius: 10px;
+    margin-right: 5%;
+    
+}
+.navbar-small{
+    display: none!important;
+}
+
+.right-content{
+    position: absolute;
+    padding-right: 5rem;
+    top: 0 ;
+    left: 25rem;
+    height: 50vw;
+}
+
+.movie-container{
+    position: relative;
+    margin-top: 20vh;
+    color: white;
+    
+
+}
+.movie-container > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60vh;
+    border-radius: 10px;
+    margin-right: 5%;
+    
+}
+.navbar-small{
+    display: none!important;
+}
+
+.right-content{
+    position: absolute;
+    padding-right: 5rem;
+    top: 0 ;
+    left: 25rem;
+    height: 50vw;
 }
 
 #search-container {
@@ -226,7 +355,55 @@ body {
 }
 
 
-@media (max-width: 1220px) {
+
+
+.sub{
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+
+.sub-2 > p{
+    margin-bottom: 2px;
+}
+
+.synopsis{
+    text-align: justify;
+    
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+.title{
+    font-size: 4rem;
+}
+
+
+
+
+.sub{
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+
+.sub-2 > p{
+    margin-bottom: 2px;
+}
+
+.synopsis{
+    text-align: justify;
+    
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+.title{
+    font-size: 4rem;
+}
+
+
+@media (max-width: 1220px){
     .btn-home {
         font-size: 4rem;
     }
@@ -249,6 +426,147 @@ body {
         font-size: 1.1rem;
         padding: 0;
     }
+}
+
+@media (max-width: 1150px){
+    
+.btn-home{
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 950px){
+
+    #actors-container{
+        display: none;
+        
+    }
+
+    .btn-watch{
+        visibility: hidden;
+        display: none!important;
+        
+    }
+    .btn-watch-small{
+        visibility: visible;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+    .home{
+        display: none;
+    }
+    .movie-container{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0px;
+        margin: 50px;
+        margin-bottom: 12vh;
+        
+    }
+    .movie-container > img{
+        position: relative;
+        justify-self: center;
+        margin: 0;
+        padding: 0;
+        height: 40vh;
+        margin-bottom: 20px;
+    }
+    nav{
+        position: static!important;
+    }
+    .navbar-small{
+        display: flex!important;
+        height: 8vh;
+        color: white;
+        background-color: rgb(25, 25, 65);
+        backdrop-filter: blur(10px);
+        opacity: 0.9;
+    }
+    .navbar-small > div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 15px;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    .navbar-small > div:hover{
+        background-color: rgba(255, 255, 255, 0.12);
+        transition: all 0.3s ease;
+    }
+   
+    .navbar-small > div p{
+        padding-top: 4px;
+        font-size: 0.5rem;
+    }
+
+    #portrait-container{
+        display: none;
+    }
+    .right-content{
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        top: 0 ;
+        left: 0;
+        height: auto;
+        margin: 0!important;
+        padding: 0!important;
+        
+        
+    }
+    .search{
+        display: none;
+    }
+    #search-container{
+        display: none;
+    }
+    .sub{
+        display: flex;
+        width: 75%;
+        justify-content: space-between;
+    }
+    .sub > p{
+        font-size: 1rem;
+    }
+    .sub > div{
+        font-size: 1rem;
+    }
+    .sub-2{
+        justify-content: center;
+        align-items: center;
+    }
+    .sub-2 > div{
+        row-gap: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+    .sub-2 > div > p{
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        row-gap: 0px;
+    }
+    .sub-2 > p{
+        text-align: center;
+        font-size: 1rem;
+    }
+    .synopsis{
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .title{
+        
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    
 }
 
 @media (max-width: 850px) {
