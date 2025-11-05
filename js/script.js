@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     /* ------ CAROUSEL DES AFFICHES DE FILMS ------- */
     const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&with_original_language=fr&sort_by=release_date.desc&primary_release_date.gte=2025-11-01&primary_release_date.lte=2025-11-07`;
+console.log(API_URL);
 
     fetch(API_URL)
         .then(response => response.json())
