@@ -1,121 +1,145 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
 }
 
 /* --- NAVBAR --- */
+
 nav {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
-nav a, .btn-log {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
+nav a,
+.btn-log {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
-nav a:hover, .btn-log:hover {
-  color: #00bfff;
+nav a:hover,
+.btn-log:hover {
+    color: #00bfff;
 }
 
 /* --- CAROUSEL DES BANDES-ANNONCES --- */
+
+
 #hero-carousel {
-  margin-top: 80px;
-  margin-bottom: 80px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 #hero-carousel .splide__slide {
-  position: relative;
-  height: 95vh;
-  overflow: hidden;
+    position: relative;
+    height: 95vh;
+    overflow: hidden;
 }
 
 #hero-carousel iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .film-overlay {
-  position: absolute;
-  bottom: 80px;
-  left: 80px;
-  z-index: 10;
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    z-index: 10;
 }
 
 .film-overlay h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .film-overlay p {
-  color: #ccc;
-  font-size: 1rem;
-  margin-bottom: 20px;
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 .film-overlay button {
-  background: #23a3ce;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
+    background: #23a3ce;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .film-overlay button:hover {
-  background: #0099cc;
+    background: #0099cc;
+}
+
+/* ---  TITRE DE PAGE --- */
+
+.titrePage {
+    font-size: 400%;
+    text-align: center;
+    color: white;
+    padding-bottom: 30px;
+}
+
+/* ---  TITRE DE SECTION --- */
+
+.titreSection {
+    font-size: 200%;
+    text-align: left;
+    padding-left: 20px;
+    color: white;
 }
 
 /* --- CAROUSEL DES AFFICHES --- */
+
 .film-card {
-  text-align: center;
-  color: #fff;
-  background: #111111f7;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.979);
-  margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    background: #111111f7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.979);
+    margin-bottom: 20px;
 }
 
 .film-card img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
 }
 
 .film-info {
-  padding: 10px;
+    padding: 10px;
 }
 
 .film-info h3 {
-  font-size: 1rem;
-  margin: 5px 0;
-  color: rgb(246, 245, 244);
+    font-size: 1rem;
+    margin: 5px 0;
+    color: rgb(246, 245, 244);
 }
 
 .film-info p {
-  margin: 0;
-  font-size: 0.9rem;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 
@@ -227,4 +251,24 @@ body {
     }
 }
 
-@media (max-width: 850px) {}
+@media (max-width: 850px) {
+    nav {
+        top: auto;
+        /* on enlève la position en haut */
+        bottom: 0;
+        /* on colle la nav en bas */
+        padding: 10px 0;
+        background: rgba(0, 0, 0, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a,
+    .btn-log {
+        font-size: 0.8rem;
+    }
+
+    #search-container {
+        display: none;
+        /* on masque la barre de recherche pour plus de clarté */
+    }
+}

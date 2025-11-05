@@ -16,18 +16,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         heroList.innerHTML += `
         <li class="splide__slide">
-          <iframe 
+            <iframe 
             src="https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer.key}" 
             frameborder="0" allowfullscreen
             allow="autoplay; encrypted-media">
-          </iframe>
-          <div class="film-overlay">
+            </iframe>
+            <div class="film-overlay">
             <h2>${movie.title}</h2>
             <p>⭐ ${movie.vote_average}/10</p>
             <button>▶️ Regarder</button>
-          </div>
+            </div>
         </li>
-      `;
+        `;
     }
 
     new Splide("#hero-carousel", {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         pagination: true,
     }).mount();
 
-    /* ------ CAROUSEL DES AFFICHES DE FILM ------- */
+    /* ------ CAROUSEL DES AFFICHES DE FILMS ------- */
     const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&with_original_language=fr&sort_by=release_date.desc&primary_release_date.gte=2025-11-01&primary_release_date.lte=2025-11-07`;
 
     fetch(API_URL)
@@ -54,12 +54,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 li.classList.add("splide__slide");
                 li.innerHTML = `
             <div class="film-card">
-              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-              <div class="film-info">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <div class="film-info">
                 <h3>${movie.title}</h3>
                 <p>📅 ${movie.release_date}</p>
                 <p>⭐ ${movie.vote_average}/10</p>
-              </div>
+            </div>
             </div>`;
                 liste.appendChild(li);
             });
@@ -78,3 +78,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
         .catch(error => console.error("Erreur :", error));
 });
+
+
