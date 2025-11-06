@@ -10,7 +10,6 @@ const filmMaker = document.getElementById("film-maker");
 const actors = document.getElementById("actors-container");
 const synopsis = document.getElementById("synopsis");
 
-const btnTrailer = document.getElementById("btn-trailer");
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
 
@@ -23,7 +22,6 @@ let filmMakerTab = [];
 let time;
 const nbActor = 5;
 
-
 //On initialise ensuite tous les elements au chargement
 
 genre.textContent = "Genre: ";
@@ -35,6 +33,13 @@ let subGrade;
 
 let filmId = urlId.get('id');
 
+if(!/\d+$/.test(filmId)){
+    console.log("ID de film invalide");
+    window.location.href = "404.html";
+}
+
+//fetch sur l'url qui contient les datas videos dans lequel nous avons les clefs youtube des trailers
+
 let urlVideo = `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${apiKey}&language=fr-FR`;              //On tappe dans l'api qui a les clefs youtube des trailer
 
 fetch(urlVideo)
@@ -43,7 +48,11 @@ fetch(urlVideo)
 
         if (data.results[0]) {
             let yKey = data.results[0].key;
-            btnTrailer.addEventListener("click", () => {
+
+            document.querySelectorAll(".btn-trailer").forEach(btnTrailer => {
+                
+
+                btnTrailer.addEventListener("click", () => {
                 //window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
                 trailerContainer.innerHTML = "";
                 trailerContainer.innerHTML = `
@@ -54,10 +63,12 @@ fetch(urlVideo)
                             </iframe>
                         `;
 
-            })
+                })
+            }) 
         }
-
-
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des vidéos :', error);
     });
 
 let urlDetails = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
@@ -90,16 +101,19 @@ fetch(urlDetails)
         } else { genre.innerHTML = ""; }
 
         synopsis.textContent = data.overview;
-
-
     })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des détails du film :', error);
+        window.location.href = "404.html";
+    });
 
 let urlCredits = `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=${apiKey}&language=fr-FR`;
 //fetch du fichier credits.json dans lequel nous avons le casting
 fetch(urlCredits)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+
+console.log(data);
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -113,6 +127,7 @@ fetch(urlCredits)
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
                 } else if (i === nbActor - 1 || data.cast.length === 1) {                         //Dernier acteur sans la virgule
+console.log("nous n'avons que un acteur");
                     actor.textContent = data.cast[i].name;
                 } else {
                     actor.textContent = data.cast[i].name + ", ";
@@ -121,7 +136,6 @@ fetch(urlCredits)
                 if (data.cast[i].character === "") {
                     character.textContent = data.cast[i].name;
                 } else { character.textContent = data.cast[i].character; }
-
 
                 character.className = "actor-charact";
                 actor.id = `actor${i}`;
@@ -144,16 +158,22 @@ fetch(urlCredits)
                     actor.appendChild(container);
 
                 })
+console.log(actor.textContent);
 
                 //On fait un evenement mouse leave pour retirer la photo et le personnage joué par l'acteur
                 actor.addEventListener("mouseleave", () => {
 
                     actor.innerHTML = "";
                     actor.textContent = actorText;
+
                 })
                 actors.appendChild(actor);
-            }else{actors.innerHTML="";}
+            }else{
+                //actors.innerHTML="";
+                break;
+            }
         }
+
 
         //Partie récupération du réalisateur
 
@@ -167,7 +187,9 @@ fetch(urlCredits)
         } else {
             filmMaker.textContent += filmMakerTab.join(", "); //On affiche les réalisateurs en les séparant par un "/"
         }
-
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des crédits du film :', error);
     });
 
 
