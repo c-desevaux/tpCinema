@@ -163,7 +163,10 @@ console.log(actor.textContent);
 
                 })
                 actors.appendChild(actor);
-            }else{actors.innerHTML="";}
+            }else{
+                //actors.innerHTML="";
+                break;
+            }
         }
 
 
