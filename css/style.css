@@ -160,10 +160,14 @@ body {
 #portrait-container {
     position: absolute;
     display: flex;
+    z-index: 1000;
+    background-color: #000;
+    height: 175px;
+    border-radius: 5px;
+    padding: 5px;
     flex-direction: column;
     align-items: center;
-    top: 0vh;
-    right: 20vh;
+
 }
 
 .actor-img {
@@ -171,17 +175,18 @@ body {
     height: 150px;
     width: 100px;
     object-fit: cover;
+    padding: 2px;
+    border: 4px solid white;
+    border-color: #ffffff;
     border-radius: 20px;
     box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 #portrait-container {
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 0vh;
-    right: 20vw;
+   
 }
 
 .actor-img {
@@ -417,7 +422,7 @@ body {
 @media (max-width: 1450px){
     #portrait-container{
         
-        right: 10vh;
+        
     }
     .search{
         width: 40vw;
