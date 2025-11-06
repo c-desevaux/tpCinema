@@ -9,6 +9,7 @@ const genre = document.getElementById("genre");
 const filmMaker = document.getElementById("film-maker");
 const actors = document.getElementById("actors-container");
 const synopsis = document.getElementById("synopsis");
+const search = document.getElementById("search");
 
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
@@ -30,6 +31,34 @@ filmMaker.textContent = "Réalisé par: ";
 
 let fullGrade;
 let subGrade;
+
+
+//fetch sur l'url qui contient les datas pour faire un search
+let searchInput;
+
+
+search.addEventListener("keyup", () => {
+
+
+    searchInput=search.value;
+    let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchInput)}&language=fr-FR`;
+
+    fetch(urlSearch)
+        .then(response => response.json())
+        .then(data => {
+    //console.log(data);
+    console.log(searchInput);
+    console.log(data.results);
+
+        })
+        .catch(error => {
+            console.log('Erreur lors de la recherche ', error);
+        });
+
+})
+
+
+
 
 let filmId = urlId.get('id');
 
@@ -77,7 +106,7 @@ let urlDetails = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}
 fetch(urlDetails)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+//console.log(data);
 
         //Partie récupération des infos principales
         movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;
@@ -113,7 +142,7 @@ fetch(urlCredits)
     .then(response => response.json())
     .then(data => {
 
-console.log(data);
+//console.log(data);
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -127,7 +156,7 @@ console.log(data);
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
                 } else if (i === nbActor - 1 || data.cast.length === 1) {                         //Dernier acteur sans la virgule
-console.log("nous n'avons que un acteur");
+
                     actor.textContent = data.cast[i].name;
                 } else {
                     actor.textContent = data.cast[i].name + ", ";
@@ -158,7 +187,7 @@ console.log("nous n'avons que un acteur");
                     actor.appendChild(container);
 
                 })
-console.log(actor.textContent);
+
 
                 //On fait un evenement mouse leave pour retirer la photo et le personnage joué par l'acteur
                 actor.addEventListener("mouseleave", () => {
