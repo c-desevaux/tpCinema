@@ -57,6 +57,7 @@ search.addEventListener("keyup", () => {
                     console.log(data.results[index].title);
                     let option = document.createElement("option");
                     option.value = data.results[index].title;
+                    option.className="option";
                     option.innerHTML = option.value;
     console.log(option.value);
                     results.appendChild(option);

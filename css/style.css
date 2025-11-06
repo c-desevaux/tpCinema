@@ -392,12 +392,25 @@ body {
 
 .results{
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     width: 50vw;
     z-index: 100000000000;
     border-radius: 20px;
     
+    padding-bottom: 10px;
+}
+
+.option{
+    color: white;
+    transition: all 0,4s ease;
+    cursor: pointer;  
+    padding-left: 15px; 
+}
+
+.option:hover{
+    color: black;
+    background-color: white;
 }
 
 
