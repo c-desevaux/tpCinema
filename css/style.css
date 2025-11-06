@@ -284,6 +284,7 @@ body {
     background-position: right center;
 }
 
+
 .home {
     color: white;
 }
@@ -493,6 +494,7 @@ body {
 
     #actors-container {
         display: none;
+        
 
     }
 
@@ -575,6 +577,7 @@ body {
 
     #portrait-container {
         display: none;
+
     }
 
     .right-content {

@@ -104,6 +104,7 @@ fetch(urlDetails)
     })
     .catch(error => {
         console.error('Erreur lors de la récupération des détails du film :', error);
+        window.location.href = "404.html";
     });
 
 let urlCredits = `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=${apiKey}&language=fr-FR`;
