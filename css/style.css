@@ -10,6 +10,25 @@ body {
     color: #fff;
     overflow-x: hidden;
 }
+
+.not-found-body {
+    background-image: url("../ressources/404.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #0099cc;
+    height: 100vh;
+}
+.not-found-content{
+    color: black;
+}
+
+.img-404 {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
 /* --- NAVBAR --- */
 
 nav {

@@ -22,7 +22,6 @@ let filmMakerTab = [];
 let time;
 const nbActor = 5;
 
-
 //On initialise ensuite tous les elements au chargement
 
 genre.textContent = "Genre: ";
@@ -33,6 +32,11 @@ let fullGrade;
 let subGrade;
 
 let filmId = urlId.get('id');
+
+if(!/\d+$/.test(filmId)){
+    console.log("ID de film invalide");
+    window.location.href = "404.html";
+}
 
 //fetch sur l'url qui contient les datas videos dans lequel nous avons les clefs youtube des trailers
 
