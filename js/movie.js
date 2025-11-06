@@ -1,5 +1,6 @@
 "use strict"
 
+
 //On recupere en début de script tous les objets pour acceder au DOM
 const movieImg = document.getElementById("movie-img");
 const title = document.getElementById("title");
@@ -10,6 +11,8 @@ const filmMaker = document.getElementById("film-maker");
 const actors = document.getElementById("actors-container");
 const synopsis = document.getElementById("synopsis");
 const search = document.getElementById("search");
+const results = document.getElementById("results");
+const select = document.createElement("select");
 
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
@@ -39,7 +42,8 @@ let searchInput;
 
 search.addEventListener("keyup", () => {
 
-
+    results.innerHTML="";
+    select.innerHTML="";
     searchInput=search.value;
     let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchInput)}&language=fr-FR`;
 
@@ -47,8 +51,20 @@ search.addEventListener("keyup", () => {
         .then(response => response.json())
         .then(data => {
     //console.log(data);
-    console.log(searchInput);
-    console.log(data.results);
+            data.results.forEach ((film, index) => {
+
+                if(index<10){
+                    console.log(data.results[index].title);
+                    let option = document.createElement("option");
+                    option.value = data.results[index].title;
+                    option.innerHTML = option.value;
+    console.log(option.value);
+                    results.appendChild(option);
+                }
+                
+
+            });
+            
 
         })
         .catch(error => {

@@ -386,8 +386,19 @@ body {
     letter-spacing: 2px;
 
 }
+.searc-result{
+    position: relative;
+}
 
-
+.results{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 50vw;
+    z-index: 100000000000;
+    border-radius: 20px;
+    
+}
 
 
 .sub {
