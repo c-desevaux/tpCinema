@@ -13,6 +13,7 @@ const synopsis = document.getElementById("synopsis");
 const search = document.getElementById("search");
 const results = document.getElementById("results");
 const select = document.createElement("select");
+const btnTrailer = document.getElementsByClassName("btn-trailer");
 
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
@@ -77,20 +78,13 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
                     }   
                 })
                 }
-                
-                
-
             });
-            
-
         })
         .catch(error => {
             console.log('Erreur lors de la recherche ', error);
         });
 
 })
-
-
 
 
 let filmId = urlId.get('id');                   //On recupere l'id de l'url qui a été appelé
@@ -108,17 +102,18 @@ fetch(urlVideo)
     .then(response => response.json())
     .then(data => {
 
-        if (data.results[0]) {
-            let yKey = data.results[0].key;
+        if(data.results[0]){
 
-            document.querySelectorAll(".btn-trailer").forEach(btnTrailer => {
+            let yKey = data.results[0].key;                     //On recupere la clefs qui va nous permetre de construire l'url pour youtube
+
+            document.querySelectorAll(".btn-trailer").forEach(btnTrailer => {       //On parcours les deux btn-trailer (l'un visible en desktop et l'autre en mobile)
                 
 
-                btnTrailer.addEventListener("click", () => {
+                btnTrailer.addEventListener("click", () => {                        //Si on click on remplace le bouton par le trailer
                 //window.open(`https://www.youtube.com/watch?v=${yKey}`, `_blank`);
                 trailerContainer.innerHTML = "";
                 trailerContainer.innerHTML = `
-                        <iframe class="trailer"
+                        <iframe class="trailer mb-5"
                             src="https://www.youtube.com/embed/${yKey}?autoplay=1" 
                             frameborder="0" allowfullscreen
                             allow="autoplay; encrypted-media">
@@ -127,13 +122,13 @@ fetch(urlVideo)
 
                 })
             }) 
+        }else{
+            trailerContainer.innerHTML="";
         }
     })
     .catch(error => {
         console.error('Erreur lors de la récupération des vidéos :', error);
     });
-
-
 
 let urlDetails = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
@@ -149,11 +144,13 @@ fetch(urlDetails)
         time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";              //On transforme les minutes en heure minute
         title.textContent = data.title;
         date.textContent = data.release_date.slice(0, 4);
-        if (data.vote_average != 0) {
-            fullGrade = data.vote_average.toString();
+
+        if (data.vote_average != 0) {                                               //Si la note est superieur a 0 on affiche la note tronqué au dixieme
+            fullGrade = data.vote_average.toString();           
             subGrade = fullGrade.substr(0, 3) + "/10";
             grade.innerHTML = '<i class="fa-solid fa-star"></i> ' + subGrade;
-        } else { grade.innerHTML = '<i class="fa-solid fa-star"></i> Non-noté' }
+
+        } else { grade.innerHTML = '<i class="fa-solid fa-star"></i> Non-noté' }       //Sinon on affiche que le film n'est pas encore noté
 
         if (data.genres.length > 0) {
             data.genres.forEach((element, index) => {   //puisque le film peut avoir plusieurs genre nous faisons une boucle for each afin de tous les récuprer et mettre en page
@@ -177,13 +174,13 @@ fetch(urlCredits)
     .then(response => response.json())
     .then(data => {
 
-console.log(data);
+//console.log(data);
 
-        if(data.cast.length<nbActor){
+        if(data.cast.length<nbActor){                       //On reajuste le no;bre d'acteur a afficher en fonction du film
             nbActor=data.cast.length;
         }
-        if(nbActor===0){
-            actors.innerHTML="";
+        if(nbActor===0){                                    //Si aucun acteur n'est renseigné dans l'api on enleve cette ligne
+            actors.innerHTML="";    
         }
 
         //Partie récupération des acteurs
@@ -195,7 +192,7 @@ console.log(data);
             
             
             if (data.cast.length>=1) {
-                if (i === 0 && (data.cast.length > 1)) {                                       //On gère l'affichage du premier espacement
+                if (i === 0 && (data.cast.length > 1)) {                 //On gère l'affichage du premier espacement
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
                 } else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
@@ -274,7 +271,7 @@ console.log(data);
         console.error('Erreur lors de la récupération des crédits du film :', error);
     });
 
-
+//Bouton home du menu mobile rechqrge la page index
 
 smallHome.addEventListener("click", () => {
     window.location.href = "index.html";
