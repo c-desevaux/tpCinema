@@ -187,6 +187,10 @@ fetch(urlCredits)
         if(nbActor===0){                                    //Si aucun acteur n'est renseigné dans l'api on enleve cette ligne
             actors.innerHTML="";    
         }
+        if(nbActor===1){
+            actors.textContent="Acteur:  ";
+
+        }
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -200,7 +204,10 @@ fetch(urlCredits)
                 if (i === 0 && (data.cast.length > 1)) {                 //On gère l'affichage du premier espacement
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
-                } else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
+                } else if(i === 0 && data.cast.length === 1){
+                    actor.textContent = data.cast[i].name;
+                    actor.style.marginLeft = "4px";
+                }else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
 
                     actor.textContent = data.cast[i].name;
                 } else {
