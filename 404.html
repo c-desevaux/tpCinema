@@ -7,11 +7,33 @@
     <link rel="icon" href="ressources/favicon.ico" />
     <title>Erreur 404</title>
 </head>
-<body class="not-found-body">
-    <div class="not-found-content">
-        <h1>ERREUR 404: Page non trouvée</h1>
-        <p>Désolé, la page que vous recherchez n'existe pas.</p>
+<body>
+
+    <div class="not-found-body">
+        <div class="not-found-content">
+            <h1>ERREUR 404: Page non trouvée</h1>
+            <p>Désolé, la page que vous recherchez n'existe pas.</p>
+        </div>
     </div>
+
+    <div class="d-flex justify-content-center align-items-center" id="nav-container">
+        <nav class="nav d-flex justify-content-around align-items-center w-100 fixed-top">
+            <a href="index.html" class="btn-home">FILMS</a>
+
+            <div id="search-container">
+                <i class="fa-solid fa-magnifying-glass loupe" ></i>
+                <div id="search-result" class="d-flex flex-column justify-content-center">
+                    <input class="search" id="search" placeholder="Rechercher un film">
+                    <div id="results" class="d-flex flex-column results"></div>
+                </div>
+                
+            </div>
+            <a href="index.html" class="home">Accueil</a>
+            <button id="btn-log" class="btn-log">Se connecter</button>
+        </nav>
+    </div>
+
+    
     
 
 
