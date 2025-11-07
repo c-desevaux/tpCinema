@@ -207,7 +207,7 @@ console.log(data);
                 actor.addEventListener("mouseover", () => {
                     if (data.cast[i].profile_path) {
                         actorImg.src = "https://image.tmdb.org/t/p/original/" + data.cast[i].profile_path;
-                    } else { actorImg.src = "../ressources/unknown_person.jpg"; }
+                    } else { actorImg.src = "ressources/unknown_person.jpg"; }
 
                     container.appendChild(actorImg);
                     container.appendChild(character);
