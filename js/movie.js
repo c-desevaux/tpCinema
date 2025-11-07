@@ -24,7 +24,7 @@ const urlId = new URLSearchParams(window.location.search);
 let actorsTab = [];
 let filmMakerTab = [];
 let time;
-const nbActor = 5;
+let nbActor = 5;
 
 //On initialise ensuite tous les elements au chargement
 
@@ -38,6 +38,7 @@ let subGrade;
 
 //fetch sur l'url qui contient les datas pour faire un search
 let searchInput;
+
 
 
 search.addEventListener("keyup", () => {            //La fonction se déclanche au relachement de n'importe quelle touche
@@ -68,7 +69,15 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
                         results.innerHTML="";
                         window.location.href= `movie.html?id=${filmId}`;    //On charge la page du film demandé
                     })
+                    search.addEventListener("keypress", (event) => {
+                    if (event.key === "Enter"){
+                        filmId=data.results[0].id
+                        results.innerHTML="";
+                        window.location.href= `movie.html?id=${filmId}`;
+                    }   
+                })
                 }
+                
                 
 
             });
@@ -144,7 +153,7 @@ fetch(urlDetails)
             fullGrade = data.vote_average.toString();
             subGrade = fullGrade.substr(0, 3) + "/10";
             grade.innerHTML = '<i class="fa-solid fa-star"></i> ' + subGrade;
-        } else { grade.innerHTML = "" }
+        } else { grade.innerHTML = '<i class="fa-solid fa-star"></i> Non-noté' }
 
         if (data.genres.length > 0) {
             data.genres.forEach((element, index) => {   //puisque le film peut avoir plusieurs genre nous faisons une boucle for each afin de tous les récuprer et mettre en page
@@ -170,6 +179,12 @@ fetch(urlCredits)
 
 console.log(data);
 
+        if(data.cast.length<nbActor){
+            nbActor=data.cast.length;
+        }
+        if(nbActor===0){
+            actors.innerHTML="";
+        }
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -177,12 +192,13 @@ console.log(data);
             let character = document.createElement("p");
             let container = document.createElement("div");
             container.id = "portrait-container";
-
-            if (data.cast[i]) {
+            
+            
+            if (data.cast.length>=1) {
                 if (i === 0 && (data.cast.length > 1)) {                                       //On gère l'affichage du premier espacement
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
-                } else if (i === nbActor - 1 || data.cast.length === 1) {                         //Dernier acteur sans la virgule
+                } else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
 
                     actor.textContent = data.cast[i].name;
                 } else {
@@ -193,6 +209,7 @@ console.log(data);
                     character.textContent = data.cast[i].name;
                 } else { character.textContent = data.cast[i].character; }
 
+                //On defini le style du portrait de l'acteur
                 character.className = "actor-charact";
                 actor.id = `actor${i}`;
                 actor.style.paddingRight = "2px";
@@ -236,9 +253,6 @@ console.log(data);
 
                 })
                 actors.appendChild(actor);
-            }else{
-                actors.innerHTML="";
-                break;
             }
         }
 
@@ -263,7 +277,7 @@ console.log(data);
 
 
 smallHome.addEventListener("click", () => {
-    window.location.href = "../index.html";
+    window.location.href = "index.html";
 });
 
 
