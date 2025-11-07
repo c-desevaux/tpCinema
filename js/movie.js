@@ -42,6 +42,7 @@ let searchInput;
 
 search.addEventListener("keyup", () => {
 
+    
     results.innerHTML="";
     select.innerHTML="";
     searchInput=search.value;
@@ -59,8 +60,14 @@ search.addEventListener("keyup", () => {
                     option.value = data.results[index].title;
                     option.className="option";
                     option.innerHTML = option.value;
-    console.log(option.value);
                     results.appendChild(option);
+
+                    option.addEventListener("click", () => {
+                        search.value = option.value;
+                        filmId = data.results[index].id;
+                        results.innerHTML="";
+                        window.location.href= `movie.html?id=${filmId}`;
+                    })
                 }
                 
 
@@ -117,6 +124,8 @@ fetch(urlVideo)
         console.error('Erreur lors de la récupération des vidéos :', error);
     });
 
+
+
 let urlDetails = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
 //fetch du fichier details.json dans lequel nous avons toutes les datas du film
@@ -159,7 +168,8 @@ fetch(urlCredits)
     .then(response => response.json())
     .then(data => {
 
-//console.log(data);
+console.log(data);
+
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -215,7 +225,7 @@ fetch(urlCredits)
                 })
                 actors.appendChild(actor);
             }else{
-                //actors.innerHTML="";
+                actors.innerHTML="";
                 break;
             }
         }
