@@ -139,7 +139,12 @@ fetch(urlDetails)
 //console.log(data);
 
         //Partie récupération des infos principales
-        movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;
+        if(data.poster_path){
+            movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;          //On recherche l'image du poster
+        }else{
+            movieImg.href="ressources/poster_missing.png";
+        }
+        
         time = data.runtime;
         time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";              //On transforme les minutes en heure minute
         title.textContent = data.title;
