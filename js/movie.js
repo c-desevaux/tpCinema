@@ -40,33 +40,33 @@ let subGrade;
 let searchInput;
 
 
-search.addEventListener("keyup", () => {
+search.addEventListener("keyup", () => {            //La fonction se déclanche au relachement de n'importe quelle touche
 
     
-    results.innerHTML="";
+    results.innerHTML="";                           //On vide les resultats au cas où il en restait
     select.innerHTML="";
-    searchInput=search.value;
+    searchInput=search.value;                       //On recupere la valeur de l'input
     let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchInput)}&language=fr-FR`;
 
     fetch(urlSearch)
         .then(response => response.json())
         .then(data => {
     //console.log(data);
-            data.results.forEach ((film, index) => {
+            data.results.forEach ((film, index) => {                    //Le fetch nous donne un json d'une liste de 20 resultats que l'on va parcourir
 
-                if(index<10){
-                    console.log(data.results[index].title);
-                    let option = document.createElement("option");
-                    option.value = data.results[index].title;
+                if(index<10){                                           //On choisit de ne garder que le 10 preniers résultats
+            
+                    let option = document.createElement("option");      //Pour chaque résultats on creer une option
+                    option.value = data.results[index].title;           //On parametre ensuite cette option
                     option.className="option";
                     option.innerHTML = option.value;
-                    results.appendChild(option);
+                    results.appendChild(option);                        //On insert notre option dans le result container
 
-                    option.addEventListener("click", () => {
+                    option.addEventListener("click", () => {            //On ajoute un evenment sur le click pour selectioner et rechercher ce film
                         search.value = option.value;
                         filmId = data.results[index].id;
                         results.innerHTML="";
-                        window.location.href= `movie.html?id=${filmId}`;
+                        window.location.href= `movie.html?id=${filmId}`;    //On charge la page du film demandé
                     })
                 }
                 
@@ -84,11 +84,11 @@ search.addEventListener("keyup", () => {
 
 
 
-let filmId = urlId.get('id');
+let filmId = urlId.get('id');                   //On recupere l'id de l'url qui a été appelé
 
-if(!/\d+$/.test(filmId)){
-    console.log("ID de film invalide");
-    window.location.href = "404.html";
+if(!/\d+$/.test(filmId)){                       //Avec un regEx on regarde si l'id est valide a savoir un nombre
+    console.log("ID de film invalide");         
+    window.location.href = "404.html";          //Si ce n'est pas le cas on revoit une erreru et chargeons la page erreur 404
 }
 
 //fetch sur l'url qui contient les datas videos dans lequel nous avons les clefs youtube des trailers
@@ -203,8 +203,20 @@ console.log(data);
                 let actorText = actor.textContent;
                 actorImg.className = "actor-img";
 
-                //On fait un evenement mouse over pour afficher la photo et le personnage joué par l'acteur
+                //On fait un evenement mouse over pour afficher la photo et le personnage joué par l'acteur qui va nous servir pour la version desktop
                 actor.addEventListener("mouseover", () => {
+                    if (data.cast[i].profile_path) {
+                        actorImg.src = "https://image.tmdb.org/t/p/original/" + data.cast[i].profile_path;
+                    } else { actorImg.src = "ressources/unknown_person.jpg"; }
+
+                    container.appendChild(actorImg);
+                    container.appendChild(character);
+                    actor.appendChild(container);
+
+                })
+
+                //On refait la meme fonction mais cette fois ci pour le click, ce qui va nous servir pour la version mobile
+                actor.addEventListener("click", () => {
                     if (data.cast[i].profile_path) {
                         actorImg.src = "https://image.tmdb.org/t/p/original/" + data.cast[i].profile_path;
                     } else { actorImg.src = "../ressources/unknown_person.jpg"; }

@@ -19,6 +19,7 @@ body {
     background-repeat: no-repeat;
     background-color: #0099cc;
     height: 100vh;
+    margin-top: 15vh;
 }
 .not-found-content{
     color: black;
@@ -201,19 +202,6 @@ body {
     box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-#portrait-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-}
-
-.actor-img {
-
-    width: 100px;
-    border-radius: 20px;
-    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
-}
 
 .btn-home {
     text-decoration: none;
@@ -396,8 +384,11 @@ body {
     background: rgba(0, 0, 0, 0.85);
     color: white;
     width: 50vw;
+    overflow-y: auto;
+    scrollbar-width: none;
     z-index: 100000000000;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     
     padding-bottom: 10px;
 }
@@ -466,10 +457,7 @@ body {
 }
 
 @media (max-width: 1450px){
-    #portrait-container{
-        
-        
-    }
+    
     .search{
         width: 40vw;
     }
@@ -524,11 +512,7 @@ body {
 
 @media (max-width: 950px) {
 
-    #actors-container {
-        display: none;
-        
-
-    }
+   
 
     
 
@@ -607,10 +591,7 @@ body {
         font-size: 0.5rem;
     }
 
-    #portrait-container {
-        display: none;
-
-    }
+    
 
     .right-content {
         position: relative;
@@ -708,7 +689,25 @@ body {
         justify-content: center!important;
     }
 
+    #portrait-container {
     
+        height:125px;
+        width: 78px;
+        border-radius: 3px;
+        
+
+    }
+
+    .actor-img {
+
+        height: 75px;
+        width: 50px;
+        object-fit: cover;
+        padding: 2px;
+        border-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+    }
 
     .trailer{
         height: 50vw;
