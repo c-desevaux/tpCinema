@@ -1,5 +1,6 @@
 "use strict"
 
+
 //On recupere en début de script tous les objets pour acceder au DOM
 const movieImg = document.getElementById("movie-img");
 const title = document.getElementById("title");
@@ -9,6 +10,9 @@ const genre = document.getElementById("genre");
 const filmMaker = document.getElementById("film-maker");
 const actors = document.getElementById("actors-container");
 const synopsis = document.getElementById("synopsis");
+const search = document.getElementById("search");
+const results = document.getElementById("results");
+const select = document.createElement("select");
 
 const trailerContainer = document.getElementById("trailer-container");
 const smallHome = document.getElementById("small-home");
@@ -30,6 +34,55 @@ filmMaker.textContent = "Réalisé par: ";
 
 let fullGrade;
 let subGrade;
+
+
+//fetch sur l'url qui contient les datas pour faire un search
+let searchInput;
+
+
+search.addEventListener("keyup", () => {
+
+    
+    results.innerHTML="";
+    select.innerHTML="";
+    searchInput=search.value;
+    let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchInput)}&language=fr-FR`;
+
+    fetch(urlSearch)
+        .then(response => response.json())
+        .then(data => {
+    //console.log(data);
+            data.results.forEach ((film, index) => {
+
+                if(index<10){
+                    console.log(data.results[index].title);
+                    let option = document.createElement("option");
+                    option.value = data.results[index].title;
+                    option.className="option";
+                    option.innerHTML = option.value;
+                    results.appendChild(option);
+
+                    option.addEventListener("click", () => {
+                        search.value = option.value;
+                        filmId = data.results[index].id;
+                        results.innerHTML="";
+                        window.location.href= `movie.html?id=${filmId}`;
+                    })
+                }
+                
+
+            });
+            
+
+        })
+        .catch(error => {
+            console.log('Erreur lors de la recherche ', error);
+        });
+
+})
+
+
+
 
 let filmId = urlId.get('id');
 
@@ -71,13 +124,15 @@ fetch(urlVideo)
         console.error('Erreur lors de la récupération des vidéos :', error);
     });
 
+
+
 let urlDetails = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=fr-FR`;
 
 //fetch du fichier details.json dans lequel nous avons toutes les datas du film
 fetch(urlDetails)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+//console.log(data);
 
         //Partie récupération des infos principales
         movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;
@@ -115,6 +170,7 @@ fetch(urlCredits)
 
 console.log(data);
 
+
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
             let actor = document.createElement("p");
@@ -127,7 +183,7 @@ console.log(data);
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
                 } else if (i === nbActor - 1 || data.cast.length === 1) {                         //Dernier acteur sans la virgule
-console.log("nous n'avons que un acteur");
+
                     actor.textContent = data.cast[i].name;
                 } else {
                     actor.textContent = data.cast[i].name + ", ";
@@ -158,7 +214,7 @@ console.log("nous n'avons que un acteur");
                     actor.appendChild(container);
 
                 })
-console.log(actor.textContent);
+
 
                 //On fait un evenement mouse leave pour retirer la photo et le personnage joué par l'acteur
                 actor.addEventListener("mouseleave", () => {
@@ -169,7 +225,7 @@ console.log(actor.textContent);
                 })
                 actors.appendChild(actor);
             }else{
-                //actors.innerHTML="";
+                actors.innerHTML="";
                 break;
             }
         }
