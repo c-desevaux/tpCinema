@@ -38,15 +38,20 @@ let subGrade;
 
 
 //fetch sur l'url qui contient les datas pour faire un search
-let searchInput;
+let searchInput = search.value;
 
+results.innerHTML="";
 
+if(searchInput===""){
+    
+    results.style.visibility = "hidden";
+}
 
 search.addEventListener("keyup", () => {            //La fonction se déclanche au relachement de n'importe quelle touche
 
-    
+    results.style.visibility = "visible";
     results.innerHTML="";                           //On vide les resultats au cas où il en restait
-    select.innerHTML="";
+    
     searchInput=search.value;                       //On recupere la valeur de l'input
     let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchInput)}&language=fr-FR`;
 
@@ -56,6 +61,7 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
     //console.log(data);
             data.results.forEach ((film, index) => {                    //Le fetch nous donne un json d'une liste de 20 resultats que l'on va parcourir
 
+                
                 if(index<10){                                           //On choisit de ne garder que le 10 preniers résultats
             
                     let option = document.createElement("option");      //Pour chaque résultats on creer une option
@@ -69,13 +75,21 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
                         filmId = data.results[index].id;
                         results.innerHTML="";
                         window.location.href= `movie.html?id=${filmId}`;    //On charge la page du film demandé
+                        searchInput="";
                     })
-                    search.addEventListener("keypress", (event) => {
-                    if (event.key === "Enter"){
-                        filmId=data.results[0].id
-                        results.innerHTML="";
-                        window.location.href= `movie.html?id=${filmId}`;
-                    }   
+                    search.addEventListener("keyup", (event) => {
+                        if(event.key === "Escape"){
+                            console.log("touche echape")
+                            search.value= "";
+                            results.innerHTML="";
+                        }
+                        else if(event.key === "Enter"){
+                            filmId=data.results[0].id
+                            results.innerHTML="";
+                            window.location.href= `movie.html?id=${filmId}`;
+                        }   
+                        
+                      
                 })
                 }
             });
@@ -139,7 +153,12 @@ fetch(urlDetails)
 //console.log(data);
 
         //Partie récupération des infos principales
-        movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;
+        if(data.poster_path){
+            movieImg.src = "https://image.tmdb.org/t/p/original/" + data.poster_path;          //On recherche l'image du poster
+        }else{
+            movieImg.href="ressources/poster_missing.png";
+        }
+        
         time = data.runtime;
         time = " - " + Math.floor(time / 60) + "h " + (time % 60) + "min";              //On transforme les minutes en heure minute
         title.textContent = data.title;
@@ -182,6 +201,10 @@ fetch(urlCredits)
         if(nbActor===0){                                    //Si aucun acteur n'est renseigné dans l'api on enleve cette ligne
             actors.innerHTML="";    
         }
+        if(nbActor===1){
+            actors.textContent="Acteur:  ";
+
+        }
 
         //Partie récupération des acteurs
         for (let i = 0; i < nbActor; i++) {                     //On boucle pour récupérer les nbActor premiers acteurs   
@@ -195,7 +218,10 @@ fetch(urlCredits)
                 if (i === 0 && (data.cast.length > 1)) {                 //On gère l'affichage du premier espacement
                     actor.textContent = data.cast[i].name + ", ";
                     actor.style.marginLeft = "4px";
-                } else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
+                } else if(i === 0 && data.cast.length === 1){
+                    actor.textContent = data.cast[i].name;
+                    actor.style.marginLeft = "4px";
+                }else if (i === nbActor - 1) {                         //Dernier acteur sans la virgule
 
                     actor.textContent = data.cast[i].name;
                 } else {
