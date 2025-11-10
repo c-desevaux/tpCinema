@@ -43,7 +43,6 @@ let searchInput = search.value;
 results.innerHTML="";
 
 if(searchInput===""){
-    
     results.style.visibility = "hidden";
 }
 
