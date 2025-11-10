@@ -127,7 +127,6 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
 
                 
                 if(index<10){                                           //On choisit de ne garder que le 10 preniers résultats
-console.log(index);
                     let option = document.createElement("option");      //Pour chaque résultats on creer une option
                     option.value = data.results[index].title;           //On parametre ensuite cette option
                     option.className="option";
