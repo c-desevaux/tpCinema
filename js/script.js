@@ -1,50 +1,60 @@
-
-
 "use strict";
 
-document.addEventListener("DOMContentLoaded", async function () {
-    const API_KEY = "f220b0b98c5eef49bb153e81d0235707";
 
-    /* --- CAROUSEL DES BANDES-ANNONCES --- */
-    const heroList = document.getElementById("hero-list");
-    const heroRes = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&sort_by=popularity.desc`);
-    const heroData = await heroRes.json();
+const API_KEY = "f220b0b98c5eef49bb153e81d0235707";
 
-    for (let i = 0; i < 5; i++) {
-        const movie = heroData.results[i];
-        const videoRes = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=fr-FR`);
-        const videoData = await videoRes.json();
-        const trailer = videoData.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+/* --- CAROUSEL DES BANDES-ANNONCES --- */
+const heroList = document.getElementById("hero-list");
 
-        if (!trailer) continue;
+fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&sort_by=popularity.desc`)
+    .then(response => response.json())
+    .then(heroData => {
+        const tabBA = [];
+        
+        for (let i = 0; i < 4; i++) {
+            const movie = heroData.results[i];
+            const videoBa = fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=fr-FR`)
+                .then(response => response.json())
+                .then(videoData => {
+                    const trailer = videoData.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+                    
+                    if (!trailer) return;
 
-        heroList.innerHTML += `
-        <li class="splide__slide">
-            <iframe 
-            src="https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer.key}" 
-            frameborder="0" allowfullscreen
-            allow="autoplay; encrypted-media">
-            </iframe>
-            <div class="film-overlay">
-            <h2>${movie.title}</h2>
-            <p>⭐ ${movie.vote_average}/10</p>
-            <button>▶️ Regarder</button>
-            </div>
-        </li>
-        `;
-    }
+                    heroList.innerHTML += `
+                    <li class="splide__slide">
+                        <iframe 
+                        src="https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer.key}" 
+                        frameborder="0" allowfullscreen
+                        allow="autoplay; encrypted-media">
+                        </iframe>
+                        <div class="film-overlay">
+                        <h2>${movie.title}</h2>
+                        <p>⭐ ${movie.vote_average}/10</p>
+                        </div>
+                    </li>
+                    `;
+                });
+            
+            tabBA.push(videoBa);
+        }
+        
+        return Promise.all(tabBA);
+    })
+    .then(() => {
+        new Splide("#hero-carousel", {
+            type: "fade",
+            autoplay: true,
+            interval: 9000,
+            rewind: true,
+            arrows: false,
+            pagination: true,
+        }).mount();
+    })
+    .catch(error => console.error("Erreur bandes-annonces :", error));
 
-    new Splide("#hero-carousel", {
-        type: "fade",
-        autoplay: true,
-        interval: 9000,
-        rewind: true,
-        arrows: false,
-        pagination: true,
-    }).mount();
 
-    /* ------ CAROUSEL DES AFFICHES DE FILMS ------- */
-    const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&with_original_language=fr&sort_by=release_date.desc&primary_release_date.gte=2025-11-01&primary_release_date.lte=2025-11-07`;
+    /* ------ CAROUSEL DES AFFICHES DE FILMS DE LA SEMAINE ------- */
+    const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&sort_by=release_date.desc&primary_release_date.gte=2025-11-01&primary_release_date.lte=2025-11-07`;
 console.log(API_URL);
 
     fetch(API_URL)
@@ -85,7 +95,3 @@ console.log(API_URL);
             }).mount();
         })
         .catch(error => console.error("Erreur :", error));
-});
-
-
-
