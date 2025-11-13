@@ -17,7 +17,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-color: #0099cc;
     height: 100vh;
     margin-top: 15vh;
 }
@@ -237,7 +236,7 @@ body {
     height: 45px;
     width: 150px;
     border-radius: 15px;
-    background: linear-gradient(90deg, rgba(53, 126, 221, 1) 0%, rgba(39, 59, 162, 1) 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
+    background: linear-gradient(90deg, #357edd 0%, #273ba2 50%, rgba(39, 59, 162, 1) 51%, rgba(53, 126, 221, 1) 100%);
     background-size: 200% 100%;
     background-position: left center;
     cursor: pointer;

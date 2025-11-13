@@ -61,7 +61,7 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
             data.results.forEach ((film, index) => {                    //Le fetch nous donne un json d'une liste de 20 resultats que l'on va parcourir
 
                 
-                if(index<10){                                           //On choisit de ne garder que le 10 preniers résultats
+                if(index<10){                                           //On choisit de ne garder que le 10 premiers résultats
             
                     let option = document.createElement("option");      //Pour chaque résultats on creer une option
                     option.value = data.results[index].title;           //On parametre ensuite cette option
@@ -86,9 +86,7 @@ search.addEventListener("keyup", () => {            //La fonction se déclanche 
                             filmId=data.results[0].id
                             results.innerHTML="";
                             window.location.href= `movie.html?id=${filmId}`;
-                        }   
-                        
-                      
+                        }       
                 })
                 }
             });
@@ -303,4 +301,12 @@ smallHome.addEventListener("click", () => {
 });
 
 
+//----------------------------------------------SEARCH BAR MOBILE---------------------------------------------------
 
+const searchMobile = document.getElementById("search-mobile");
+
+
+searchMobile.addEventListener("click", () => {
+console.log("evenement bar mobile");
+    search.style.display = "block!important";
+})
